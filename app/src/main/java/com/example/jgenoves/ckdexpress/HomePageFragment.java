@@ -16,19 +16,23 @@ import androidx.fragment.app.FragmentActivity;
 public class HomePageFragment extends Fragment {
 
     private Patient mPatient;
+
     private View mLineBreak_1;
     private TextView mWelcome;
     private TextView mAlertTitle;
     private TextView mAlertMessages;
     private Button mNavButton;
-    private Button mNotificationButton;
+//    private Button mNotificationButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        mPatient = Patient.get(getActivity());
+        mPatient = new Patient();
 
+        mPatient.setName("Jordan Genovese");
+        mPatient.setCheckupDue(true);
+        mPatient.setNephVisitDue(true);
     }
 
     @Override
@@ -39,7 +43,7 @@ public class HomePageFragment extends Fragment {
         mLineBreak_1 = (View) v.findViewById(R.id.line_break1);
 
         mWelcome = (TextView) v.findViewById(R.id.welcome_text);
-        mWelcome.setText("Welcome back, \n" + mPatient.getFirstName() + ".");
+        mWelcome.setText("Welcome back, \n" + mPatient.getName() + ".");
 
         mAlertTitle = (TextView) v.findViewById(R.id.alert_title);
         mAlertMessages = (TextView) v.findViewById(R.id.alert_messages);
@@ -49,21 +53,21 @@ public class HomePageFragment extends Fragment {
         mNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = eGFRListActivity.newIntent(getActivity());
+                Intent intent = eGFRListActivity.newIntent(getActivity(), mPatient.getGfrScores());
                 startActivity(intent);
 
 
             }
         });
 
-        mNotificationButton = (Button) v.findViewById(R.id.to_notifications_button);
-        mNotificationButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = notificationActivity.newIntent(getActivity());
-                startActivity(intent);
-            }
-        });
+//        mNotificationButton = (Button) v.findViewById(R.id.to_notifications_button);
+//        mNotificationButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = notificationActivity.newIntent(getActivity());
+//                startActivity(intent);
+//            }
+//        });
 
         return v;
     }
