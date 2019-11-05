@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/welccome_message"
+        android:textAlignment="viewStart"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/alert_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="@string/alerts_title"
+        android:textSize="30sp" />
+
+    <View
+        android:id="@+id/line_break1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/alert_messages"
+        android:layout_width="match_parent"
+        android:layout_height="275dp" />
+
+
+
+
+    <Button
+        android:id="@+id/to_egfr_scores_button"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:text="@string/button_title"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
