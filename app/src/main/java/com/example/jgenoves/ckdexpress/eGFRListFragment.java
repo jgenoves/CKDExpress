@@ -2,17 +2,12 @@ package com.example.jgenoves.ckdexpress;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -49,7 +44,7 @@ public class eGFRListFragment extends Fragment {
     }
 
     private void updateUI(){
-        ArrayList<EGFREntry> egfrEntries = Patient.get(getActivity()).sortListMostRecentScoreFirst();
+        List<EGFREntry> egfrEntries = Patient.get(getActivity()).getGfrScores();
         mAdapter = new EGFRAdapter(egfrEntries);
         mEGFRRecyclerView.setAdapter(mAdapter);
 
@@ -72,30 +67,13 @@ public class eGFRListFragment extends Fragment {
 
         private EGFREntry mEGFREntry;
 
-        private TextView mScoreTextView;;
-        private TextView mDateTextView;
-        private TextView mLocationTextView;
-
         public EGFRHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_egfr_entry, parent, false));
-
-            mScoreTextView = (TextView) itemView.findViewById(R.id.egfr_score);
-            mDateTextView = (TextView) itemView.findViewById(R.id.egfr_date);
-            mLocationTextView = (TextView) itemView.findViewById(R.id.egfr_location);
-
 
         }
 
         public void bind(EGFREntry egfrEntry){
-            mEGFREntry = egfrEntry;
-            mScoreTextView.setText("Level: " + Double.toString(mEGFREntry.getScore()));
 
-            Date date = mEGFREntry.getDate();
-            SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yyyy");
-            String d = formatter.format(date);
-            mDateTextView.setText("Date: " + d);
-
-            mLocationTextView.setText("Location: \n" + mEGFREntry.getLocation());
         }
 
         public void onClick(View v){
@@ -129,20 +107,6 @@ public class eGFRListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull EGFRHolder holder, int position) {
-
-            EGFREntry e = mEGFREntryList.get(position);
-            holder.bind(e);
-
-            if(position %2 == 1)
-            {
-                holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                //  holder.imageView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            }
-            else
-            {
-                holder.itemView.setBackgroundColor(Color.parseColor("#E7E7E7"));
-                //  holder.imageView.setBackgroundColor(Color.parseColor("#FFFAF8FD"));
-            }
 
         }
 

@@ -36,7 +36,6 @@ public class eGFRListActivity extends AppCompatActivity {
         Intent intent = new Intent(packageContext, eGFRListActivity.class);
         return intent;
     }
-
     protected Fragment createFragment (){
         return new eGFRListFragment();
     };
