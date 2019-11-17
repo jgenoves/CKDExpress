@@ -3,4 +3,5 @@
     <string name="welccome_message">Welcome Back!</string>
     <string name="alerts_title">Alerts:</string>
     <string name="button_title">My GFR Scores</string>
+    <string name="notification_button_title">Notifications</string>
 </resources>

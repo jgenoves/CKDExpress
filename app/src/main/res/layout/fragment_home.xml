@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/welcome_text"
@@ -14,7 +14,7 @@
         android:layout_marginRight="20dp"
         android:text="@string/welccome_message"
         android:textAlignment="viewStart"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold|italic" />
 
     <TextView
@@ -28,23 +28,33 @@
         android:id="@+id/line_break1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/alert_messages"
         android:layout_width="match_parent"
-        android:layout_height="275dp" />
-
-
-
+        android:layout_height="182dp" />
 
     <Button
         android:id="@+id/to_egfr_scores_button"
         android:layout_width="match_parent"
         android:layout_height="83dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/button_title"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/to_notifications_button"
+        android:layout_width="195dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="50dp"
+        android:background="#757373"
+        android:text="@string/notification_button_title"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
 
 </LinearLayout>
