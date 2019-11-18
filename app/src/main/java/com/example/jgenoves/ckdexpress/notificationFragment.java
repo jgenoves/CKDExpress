@@ -13,7 +13,10 @@ import org.w3c.dom.Text;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-public class HomePageFragment extends Fragment {
+public class notificationFragment extends Fragment {
+    //this was all copied from the homepage fragment class
+    //going forward, I'll edit it so it actually fits for the class
+    //TODO::Finish this class and create an XML
 
     private Patient mPatient;
     private View mLineBreak_1;
