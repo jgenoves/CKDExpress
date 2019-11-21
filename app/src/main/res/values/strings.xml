@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CKD Express</string>
-    <string name="welccome_message">Welcome Back!</string>
-    <string name="alerts_title">Alerts:</string>
+    <string name="welccome_message">Loading...</string>
+    <string name="alerts_title">Recent Score:</string>
+    <string name="alerts_message">Loading...</string>
     <string name="button_title">My GFR Scores</string>
 </resources>

@@ -29,19 +29,13 @@ public class Patient {
 
 
     public Patient(Context context){
-        mFirstName = "Jordan";
-        mLastName= "Genovese";
+        mFirstName = "";
+        mLastName= "";
         mGfrScores = new ArrayList<EGFREntry>();
         mBaseGFRLevel = 50;
         mCheckupDue = false;
         mNephVisitDue = false;
 
-
-        for(int i = 0; i < 10; i++){
-            EGFREntry e = new EGFREntry();
-            e.setScore(50);
-            mGfrScores.add(e);
-        }
     }
 
     public String getFirstName() {
@@ -106,6 +100,10 @@ public class Patient {
 
         }
         return null;
+    }
+
+    public EGFREntry getMostRecentGFRScore(){
+        return mGfrScores.get(mGfrScores.size()-1);
     }
 
 
