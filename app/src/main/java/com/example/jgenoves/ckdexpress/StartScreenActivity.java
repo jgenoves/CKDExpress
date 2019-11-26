@@ -29,10 +29,7 @@ public class StartScreenActivity extends AppCompatActivity {
 
     }
 
-    public static Intent newIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, StartScreenActivity.class);
-        return intent;
-    }
+
 
 
     protected Fragment createFragment (){

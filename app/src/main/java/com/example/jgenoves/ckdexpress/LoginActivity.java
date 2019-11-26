@@ -1,5 +1,7 @@
 package com.example.jgenoves.ckdexpress;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+    public static Intent newIntent(Context packageContext){
+        Intent intent = new Intent(packageContext, LoginActivity.class);
+        return intent;
+    }
+
+
     protected Fragment createFragment (){
         return new LoginFragment();
     };
