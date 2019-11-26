@@ -10,17 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="androidx.multidex.MultiDexApplication">
-        <activity android:name=".HomePageActivity">
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".eGFRListActivity">
 
         </activity>
+
+
+        <activity android:name=".HomePageActivity"/>
+        <activity android:name=".eGFRListActivity"/>
 
 
         <activity android:name=".notificationActivity">
