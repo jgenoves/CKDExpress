@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class LoginActivity extends AppCompatActivity {
+public class StartScreenActivity extends AppCompatActivity {
 
 
     @Override
@@ -29,15 +29,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public static Intent newIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, LoginActivity.class);
-        return intent;
-    }
+
 
 
     protected Fragment createFragment (){
-        return new LoginFragment();
+        return new StartScreenFragment();
     };
 
-
 }
+
+
