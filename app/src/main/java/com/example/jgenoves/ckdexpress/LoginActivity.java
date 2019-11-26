@@ -1,13 +1,13 @@
 package com.example.jgenoves.ckdexpress;
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public abstract class SingleFragmentActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    protected abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,4 +26,9 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
 
     }
+    protected Fragment createFragment (){
+        return new LoginFragment();
+    };
+
+
 }

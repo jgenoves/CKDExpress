@@ -21,8 +21,12 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+
+import org.w3c.dom.Document;
 
 import java.util.Date;
 import java.util.List;
@@ -92,8 +96,10 @@ public class HomePageFragment extends Fragment {
     }
 
     public void fetchPatient(){
-        DocumentReference patientRef = mDatabase.collection("patients").document("evkuDTelJGYRSsr5hSxx");
-        CollectionReference gfrScoresRef = mDatabase.collection("patients").document("evkuDTelJGYRSsr5hSxx").collection("GFRScores");
+        System.out.println(mPatient.getUserId());
+        DocumentReference patientRef = mDatabase.collection("patients").document(mPatient.getUserId().toString());
+
+        CollectionReference gfrScoresRef = patientRef.collection("GFRScores");
 
         patientRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -102,7 +108,6 @@ public class HomePageFragment extends Fragment {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         String fName = document.getString("firstName");
                         String lName = document.getString("lastName");
 
@@ -130,8 +135,8 @@ public class HomePageFragment extends Fragment {
                         Log.d(TAG, "DocumentSnapshot data: " + s.getData());
                         EGFREntry e = new EGFREntry();
 
-                        double score = s.getDouble("Score");
-                        Date date = s.getDate("Date");
+                        double score = s.getDouble("gfrScore");
+                        Date date = s.getDate("date");
 
                         e.setScore(score);
                         e.setDate(date);
@@ -143,7 +148,7 @@ public class HomePageFragment extends Fragment {
                     mAlertMessages.setText("Score: " + mPatient.getMostRecentGFRScore().getScore());
                 }
                 else{
-                    Log.d(TAG, "No such document");
+                    Log.d(TAG, "get failed with ", task.getException());
                 }
             }
 
