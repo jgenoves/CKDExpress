@@ -2,6 +2,8 @@ package com.example.jgenoves.ckdexpress;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,8 @@ public class LoginFragment extends Fragment {
     private EditText mPasswordText;
     private Button mLoginButton;
 
+    private Patient mPatient;
+
 
     FirebaseAuth mFirebaseAuth;
 
@@ -36,8 +40,8 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mPatient = Patient.get(getActivity());
 
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
@@ -50,12 +54,44 @@ public class LoginFragment extends Fragment {
 
 
         mEmailText = (EditText) v.findViewById(R.id.login_email);
+        mEmailText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mPatient.setEmail(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         mPasswordText = (EditText) v.findViewById(R.id.login_password);
+        mPasswordText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mPatient.setPassword(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         mLoginButton = (Button) v.findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser("genovese.jordan9@gmail.com", "Volkl175");
+                loginUser(mPatient.getEmail(), mPatient.getPassword());
             }
         });
 
@@ -66,9 +102,10 @@ public class LoginFragment extends Fragment {
         mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                mPatient.setEmail("x");
+                mPatient.setPassword("x");
                 if(task.isSuccessful()){
-                    Patient p = Patient.get(getActivity());
-                    p.setUserId(task.getResult().getUser().getUid());
+                    mPatient.setUserId(task.getResult().getUser().getUid());
                     Intent intent = HomePageActivity.newIntent(getActivity());
                     startActivity(intent);
                 }
