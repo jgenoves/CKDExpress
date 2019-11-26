@@ -11,6 +11,9 @@ public class Patient {
 
     private static Patient sPatient;
 
+
+    private String mEmail;
+    private String mPassword;
     private String mUserId;
     private String mFirstName;
     private String mLastName;
@@ -30,6 +33,8 @@ public class Patient {
 
 
     public Patient(Context context){
+        mEmail = "`x";
+        mPassword = "x";
         mUserId="";
         mFirstName = "";
         mLastName= "";
@@ -39,6 +44,23 @@ public class Patient {
         mNephVisitDue = false;
 
     }
+
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public void setEmail(String email) {
+        mEmail = email;
+    }
+
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
 
     public String getUserId() {
         return mUserId;
