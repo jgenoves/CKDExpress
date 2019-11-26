@@ -11,7 +11,7 @@ public class Patient {
 
     private static Patient sPatient;
 
-
+    private String mUserId;
     private String mFirstName;
     private String mLastName;
     private List<EGFREntry> mGfrScores;
@@ -28,7 +28,9 @@ public class Patient {
     }
 
 
+
     public Patient(Context context){
+        mUserId="";
         mFirstName = "";
         mLastName= "";
         mGfrScores = new ArrayList<EGFREntry>();
@@ -36,6 +38,14 @@ public class Patient {
         mCheckupDue = false;
         mNephVisitDue = false;
 
+    }
+
+    public String getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(String userId) {
+        mUserId = userId;
     }
 
     public String getFirstName() {
