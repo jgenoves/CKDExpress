@@ -138,9 +138,11 @@ public class HomePageFragment extends Fragment {
 
                         double score = s.getDouble("gfrScore");
                         Date date = s.getDate("date");
+                        String location = s.getString("location");
 
                         e.setScore(score);
                         e.setDate(date);
+                        e.setLocation(location);
 
                         mPatient.addGFRScore(e);
 

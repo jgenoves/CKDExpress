@@ -6,9 +6,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class EGFREntry implements Comparable<EGFREntry> {
+public class EGFREntry implements Serializable {
 
-    private int mId;
+    private String mId;
     private double mScore;
     private Date mDate;
 
@@ -16,7 +16,7 @@ public class EGFREntry implements Comparable<EGFREntry> {
     private String mLocation;
 
     public EGFREntry() {
-        mId = -1;
+        mId = "";
         mScore = 0.0;
         mDate = new Date();
         mLocation = "";
@@ -30,11 +30,11 @@ public class EGFREntry implements Comparable<EGFREntry> {
         mLocation = location;
     }
 
-    public int getId() {
+    public String getId() {
         return mId;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         mId = id;
     }
 
@@ -55,29 +55,9 @@ public class EGFREntry implements Comparable<EGFREntry> {
     }
 
 
-    @Override
-    public int compareTo(EGFREntry e) {
-
-
-        if(mId < e.getId()){
-            return -1;
-        }
-        else if(mId == getId()){
-            return 0;
-        }
-        else if(mId > getId()){
-            return 1;
-        }
-        else{
-            return 0;
-        }
-
-    }
 
 
 
 
-
-
-
+    
 }
