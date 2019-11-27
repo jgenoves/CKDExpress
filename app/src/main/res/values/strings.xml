@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">CKD Express</string>
     <string name="welccome_message">Loading...</string>
-    <string name="alerts_title">Recent Score:</string>
-    <string name="alerts_message">Loading...</string>
+    <string name="summary_title">Summary:</string>
+    <string name="recent_score">Loading...</string>
+    <string name="ckd_stage">Loading...</string>
     <string name="button_title">My GFR Scores</string>
     <string name="notification_button_title">Notifications</string>
     <string name="notification_title">Notification Title</string>

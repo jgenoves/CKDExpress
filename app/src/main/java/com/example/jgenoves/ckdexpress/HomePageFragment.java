@@ -42,8 +42,9 @@ public class HomePageFragment extends Fragment {
     private Patient mPatient;
     private View mLineBreak_1;
     private TextView mWelcome;
-    private TextView mAlertTitle;
-    private TextView mAlertMessages;
+    private TextView mSummaryTitle;
+    private TextView mRecentScore;
+    private TextView mCkdStage;
     private Button mNavButton;
 //    private Button mNotificationButton;
 
@@ -67,8 +68,9 @@ public class HomePageFragment extends Fragment {
         mDatabase = FirebaseFirestore.getInstance();
         mWelcome = (TextView) v.findViewById(R.id.welcome_text);
         mLineBreak_1 = (View) v.findViewById(R.id.line_break1);
-        mAlertTitle = (TextView) v.findViewById(R.id.alert_title);
-        mAlertMessages = (TextView) v.findViewById(R.id.alert_messages);
+        mSummaryTitle = (TextView) v.findViewById(R.id.summary_title);
+        mRecentScore = (TextView) v.findViewById(R.id.recent_score);
+        mCkdStage = (TextView) v.findViewById(R.id.ckd_level);
         mNavButton = (Button) v.findViewById(R.id.to_egfr_scores_button);
         mNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +112,15 @@ public class HomePageFragment extends Fragment {
 
                         String fName = document.getString("firstName");
                         String lName = document.getString("lastName");
+                        String ckdS = document.getString("ckdStage");
+
 
                         mPatient.setFirstName(fName);
                         mPatient.setLastName(lName);
+                        mPatient.setCKDStage(ckdS);
 
                         mWelcome.setText("Welcome back, \n" + mPatient.getFirstName() + ".");
+                        mCkdStage.setText("CKD Stage: " + mPatient.getCKDStage());
                     } else {
                         mWelcome.setText("Error! Unable to retrieve data");
                         Log.d(TAG, "No such document");
@@ -147,7 +153,7 @@ public class HomePageFragment extends Fragment {
 
                     }
 
-                    mAlertMessages.setText("Score: " + mPatient.getMostRecentGFRScore().getScore());
+                    mRecentScore.setText("Recent Score: " + mPatient.getMostRecentGFRScore().getScore());
                 }
                 else{
                     Log.d(TAG, "get failed with ", task.getException());
