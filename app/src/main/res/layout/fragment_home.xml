@@ -18,10 +18,10 @@
         android:textStyle="bold|italic" />
 
     <TextView
-        android:id="@+id/alert_title"
+        android:id="@+id/summary_title"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="@string/alerts_title"
+        android:text="@string/summary_title"
         android:textSize="30sp" />
 
     <View
@@ -31,10 +31,16 @@
         android:background="@android:color/darker_gray"/>
 
     <TextView
-        android:id="@+id/alert_messages"
+        android:id="@+id/recent_score"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/alerts_message" />
+        android:text="@string/recent_score" />
+
+    <TextView
+        android:id="@+id/ckd_level"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/ckd_stage" />
 
 
 
