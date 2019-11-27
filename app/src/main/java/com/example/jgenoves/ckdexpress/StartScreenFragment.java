@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 public class StartScreenFragment extends Fragment {
 
     private Button mLoginButton;
-    private Button mSignUpButton;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class StartScreenFragment extends Fragment {
             }
         });
 
-        mSignUpButton = (Button) v.findViewById(R.id.ss_signup_button);
+
 
 
         return v;
