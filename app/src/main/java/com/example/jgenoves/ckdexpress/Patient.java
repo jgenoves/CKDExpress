@@ -2,6 +2,9 @@ package com.example.jgenoves.ckdexpress;
 
 import android.content.Context;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,17 +17,17 @@ public class Patient {
 
     private String mEmail;
     private String mPassword;
-    private String mUserId;
+
     private String mFirstName;
     private String mLastName;
-
-
     private String mCKDStage;
     private List<EGFREntry> mGfrScores;
     private double mBaseGFRLevel;
-
     private boolean mCheckupDue;
     private boolean mNephVisitDue;
+
+    FirebaseAuth mFirebaseAuth;
+    FirebaseUser mUser;
 
     public static Patient get(Context context){
         if(sPatient == null){
@@ -38,15 +41,32 @@ public class Patient {
     public Patient(Context context){
         mEmail = "`x";
         mPassword = "x";
-        mUserId="";
+
         mFirstName = "";
         mLastName= "";
         mCKDStage="";
         mGfrScores = new ArrayList<EGFREntry>();
-        mBaseGFRLevel = 50;
+        mBaseGFRLevel = 0;
         mCheckupDue = false;
         mNephVisitDue = false;
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mUser = mFirebaseAuth.getCurrentUser();
 
+
+
+    }
+
+    public FirebaseAuth getFirebaseAuth() {
+        return mFirebaseAuth;
+    }
+
+
+    public FirebaseUser getUser() {
+        return mUser;
+    }
+
+    public void setUser(FirebaseUser user) {
+        mUser = user;
     }
 
 
@@ -76,13 +96,6 @@ public class Patient {
     }
 
 
-    public String getUserId() {
-        return mUserId;
-    }
-
-    public void setUserId(String userId) {
-        mUserId = userId;
-    }
 
     public String getFirstName() {
         return mFirstName;
@@ -150,6 +163,16 @@ public class Patient {
 
     public EGFREntry getMostRecentGFRScore(){
         return mGfrScores.get(mGfrScores.size()-1);
+    }
+
+    public void resetScores(){
+        mGfrScores = new ArrayList<EGFREntry>();
+    }
+
+    public void resetPatient(){
+        mFirebaseAuth.signOut();
+        sPatient = null;
+
     }
 
 

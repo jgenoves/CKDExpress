@@ -1,59 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp">
 
+
     <TextView
         android:id="@+id/welcome_text"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="374dp"
+        android:layout_height="58dp"
         android:text="@string/welccome_message"
         android:textAlignment="viewStart"
         android:textSize="30dp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/to_egfr_scores_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
 
     <TextView
         android:id="@+id/summary_title"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/summary_title"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/ckd_level"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/line_break1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/ckd_level"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/recent_score"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/recent_score" />
+        android:layout_marginBottom="200dp"
+        android:text="@string/recent_score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ckd_level"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/ckd_stage" />
-
-
-
-
-
+        android:layout_marginBottom="16dp"
+        android:text="@string/ckd_stage"
+        app:layout_constraintBottom_toTopOf="@+id/recent_score"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/to_egfr_scores_button"
         android:layout_width="match_parent"
         android:layout_height="83dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/button_title"
         android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/summary_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sign_out"
+        android:layout_width="70dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="44dp"
+        android:gravity="center"
+        android:text="@string/sign_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
