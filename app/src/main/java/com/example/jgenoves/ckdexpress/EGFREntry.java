@@ -8,20 +8,33 @@ import java.util.UUID;
 
 public class EGFREntry implements Serializable {
 
-    private UUID mId;
+    private String mId;
     private double mScore;
     private Date mDate;
 
+
+    private String mLocation;
+
     public EGFREntry() {
-        mId = UUID.randomUUID();
+        mId = "";
+        mScore = 0.0;
         mDate = new Date();
+        mLocation = "";
     }
 
-    public UUID getId() {
+    public String getLocation() {
+        return mLocation;
+    }
+
+    public void setLocation(String location) {
+        mLocation = location;
+    }
+
+    public String getId() {
         return mId;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         mId = id;
     }
 
@@ -40,6 +53,8 @@ public class EGFREntry implements Serializable {
     public void setDate(Date date) {
         mDate = date;
     }
+
+
 
 
 

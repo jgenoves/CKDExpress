@@ -21,8 +21,8 @@
         </activity>
 
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".HomePageActivity"/>
-        <activity android:name=".eGFRListActivity"/>
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".eGFRListActivity" />
     </application>
 
 </manifest>
