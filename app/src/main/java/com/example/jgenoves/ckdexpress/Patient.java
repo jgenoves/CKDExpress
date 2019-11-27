@@ -17,6 +17,9 @@ public class Patient {
     private String mUserId;
     private String mFirstName;
     private String mLastName;
+
+
+    private String mCKDStage;
     private List<EGFREntry> mGfrScores;
     private double mBaseGFRLevel;
 
@@ -38,12 +41,23 @@ public class Patient {
         mUserId="";
         mFirstName = "";
         mLastName= "";
+        mCKDStage="";
         mGfrScores = new ArrayList<EGFREntry>();
         mBaseGFRLevel = 50;
         mCheckupDue = false;
         mNephVisitDue = false;
 
     }
+
+
+    public String getCKDStage() {
+        return mCKDStage;
+    }
+
+    public void setCKDStage(String CKDStage) {
+        mCKDStage = CKDStage;
+    }
+
 
     public String getEmail() {
         return mEmail;
