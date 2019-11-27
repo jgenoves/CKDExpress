@@ -9,9 +9,10 @@
     <string name="score">Score</string>
     <string name="location">Location</string>
     <string name="date">Date</string>
-    <string name="login">Login</string>
+    <string name="go">GO</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="login_title">Log In:</string>
     <string name="notification_button_title">Notifications</string>
     <string name="notification_title">Notification Title</string>
     <string name="notification_message">Notification Message</string>
