@@ -30,24 +30,19 @@ public class LoginFragment extends Fragment {
     private Patient mPatient;
 
 
-    FirebaseAuth mFirebaseAuth;
-
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-        mFirebaseAuth = FirebaseAuth.getInstance();
         mPatient = Patient.get(getActivity());
 
-        FirebaseUser user = mFirebaseAuth.getCurrentUser();
-
-        user = null;
-
-        if(user != null){
+        if(mPatient.getUser() != null){
             Intent intent = HomePageActivity.newIntent(getActivity());
             startActivity(intent);
         }
@@ -98,14 +93,16 @@ public class LoginFragment extends Fragment {
         return v;
     }
 
+
     public void loginUser(String email, String password){
-        mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mPatient.resetPatient();
+        mPatient.getFirebaseAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 mPatient.setEmail("x");
                 mPatient.setPassword("x");
                 if(task.isSuccessful()){
-                    mPatient.setUserId(task.getResult().getUser().getUid());
+                    mPatient.setUser(task.getResult().getUser());
                     Intent intent = HomePageActivity.newIntent(getActivity());
                     startActivity(intent);
                 }

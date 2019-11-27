@@ -46,6 +46,7 @@ public class HomePageFragment extends Fragment {
     private TextView mRecentScore;
     private TextView mCkdStage;
     private Button mNavButton;
+    private TextView mSignOut;
 
     private static final String TAG = "HomePageFragment";
 
@@ -78,9 +79,20 @@ public class HomePageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        mSignOut = (TextView) v.findViewById(R.id.sign_out);
+        mSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Patient.get(getActivity()).resetPatient();
+                Intent intent = StartScreenActivity.newIntent(getActivity());
+                startActivity(intent);
 
+            }
+        });
 
         fetchPatient();
+
+
 
 
 
@@ -99,8 +111,8 @@ public class HomePageFragment extends Fragment {
     }
 
     public void fetchPatient(){
-        System.out.println(mPatient.getUserId());
-        DocumentReference patientRef = mDatabase.collection("patients").document(mPatient.getUserId().toString());
+
+        DocumentReference patientRef = mDatabase.collection("patients").document(mPatient.getUser().getUid());
 
         CollectionReference gfrScoresRef = patientRef.collection("GFRScores");
 
@@ -120,7 +132,7 @@ public class HomePageFragment extends Fragment {
                         mPatient.setLastName(lName);
                         mPatient.setCKDStage(ckdS);
 
-                        mWelcome.setText("Welcome back, \n" + mPatient.getFirstName() + ".");
+                        mWelcome.setText("Welcome back, " + mPatient.getFirstName() + ".");
                         mCkdStage.setText("CKD Stage: " + mPatient.getCKDStage());
                     } else {
                         mWelcome.setText("Error! Unable to retrieve data");
@@ -136,6 +148,7 @@ public class HomePageFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
+                    mPatient.resetScores();
                     QuerySnapshot qSnapshot = task.getResult();
                     List<DocumentSnapshot> gfrScoresDocs = qSnapshot.getDocuments();
                     for(DocumentSnapshot s:gfrScoresDocs){

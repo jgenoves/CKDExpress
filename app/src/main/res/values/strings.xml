@@ -6,12 +6,10 @@
     <string name="ckd_stage">Loading...</string>
     <string name="button_title">My GFR Scores</string>
     <string name="sign_out">Sign Out</string>
-    <string name="score">Score: </string>
+    <string name="score">Score</string>
     <string name="location">Location</string>
-    <string name="date">Date: </string>
-    <string name="go">GO</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="date">Date</string>
+    <string name="login">Login</string>
     <string name="login_title">Log In:</string>
     <string name="login_admin">Login as Admin</string>
     <string name="add_patient">Add Patient</string>
