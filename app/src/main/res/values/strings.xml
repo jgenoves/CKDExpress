@@ -4,4 +4,6 @@
     <string name="alerts_title">Alerts:</string>
     <string name="button_title">My GFR Scores</string>
     <string name="notification_button_title">Notifications</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_message">Notification Message</string>
 </resources>

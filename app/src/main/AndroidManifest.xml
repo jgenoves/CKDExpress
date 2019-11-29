@@ -20,6 +20,9 @@
         <activity android:name=".eGFRListActivity">
 
         </activity>
+        <activity android:name=".notificationActivity">
+
+        </activity>
     </application>
 
 </manifest>
