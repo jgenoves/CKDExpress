@@ -1,5 +1,7 @@
 package com.example.jgenoves.ckdexpress;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -69,9 +71,12 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
 
     private String firstName = null;
     private String lastName = null;
-    private Date dateOfBirth = null;
+    private Date dateOfBirth = new Date();
     private String email = null;
     private String tempPass = null;
+
+    private static final int REQUEST_DATE = 0;
+
 
 
 
@@ -95,7 +100,8 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
             @Override
             public void onClick(View view) {
                 FragmentManager fm = getFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
+                DatePickerFragment dialog = DatePickerFragment.newInstance(dateOfBirth);
+                dialog.setTargetFragment(AddPatientFragment.this, REQUEST_DATE);
                 dialog.show(fm, DIALOG_DATE);
             }
         });
@@ -114,6 +120,19 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
 
         return v;
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode != Activity.RESULT_OK){
+            return;
+        }
+
+        if(requestCode == REQUEST_DATE){
+            Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            dateOfBirth = date;
+            mDatePicker.setText(dateOfBirth.toString());
+        }
     }
 
     @Override
@@ -152,6 +171,9 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
                     Map<String, Object> patient = new HashMap<>();
                     patient.put("firstName", firstName);
                     patient.put("lastName", lastName);
+                    patient.put("dob", dateOfBirth);
+                    patient.put("status", "patient");
+                    
 
                     FirebaseFirestore.getInstance().collection("patients").document(Patient.get(getActivity()).getUser().getUid())
                             .set(patient)
