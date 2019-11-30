@@ -13,10 +13,10 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login_title">Log In:</string>
-    <string name="login">Login</string>
     <string name="login_admin">Login as Admin</string>
     <string name="add_patient">Add Patient</string>
     <string name="view_patient">View Patient</string>
+    <string name="login">Login</string>
     <string name="add_patient_title">Add Patient:</string>
 
     <string name="add_patient_first_name">First Name:</string>
