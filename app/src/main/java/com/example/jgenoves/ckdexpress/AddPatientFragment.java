@@ -1,34 +1,85 @@
 package com.example.jgenoves.ckdexpress;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class AddPatientFragment extends Fragment {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Checked;
+import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
+import com.mobsandgeeks.saripaar.annotation.Email;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Max;
+import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Password;
+import com.mobsandgeeks.saripaar.annotation.Pattern;
+import com.mobsandgeeks.saripaar.annotation.Url;
+
+import javax.annotation.Nonnegative;
+
+public class AddPatientFragment extends Fragment implements Validator.ValidationListener {
 
     private static final String DIALOG_DATE = "DialogDate";
 
     private TextView mAddPatientTitle;
+
+    @NotEmpty
     private EditText mFirstName;
+
+    @NotEmpty
     private EditText mLastName;
+
+    @NotEmpty
     private Button mDatePicker;
+
+    @NotEmpty
+    @Email
     private EditText mEmail;
+
+    @NotEmpty
+    @Password(min = 6, scheme = Password.Scheme.ALPHA_NUMERIC_MIXED_CASE_SYMBOLS)
     private EditText mTempPassword;
+
+
     private Button mAddPatient;
+    private Validator validator;
+
+    private String firstName = null;
+    private String lastName = null;
+    private Date dateOfBirth = null;
+    private String email = null;
+    private String tempPass = null;
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
     }
 
@@ -52,9 +103,74 @@ public class AddPatientFragment extends Fragment {
         mTempPassword = (EditText) v.findViewById(R.id.add_patient_temporary_pass);
 
         mAddPatient = (Button) v.findViewById(R.id.final_add_patient_btn);
+        mAddPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validator.validate();
+            }
+        });
+
+
 
         return v;
 
     }
 
+    @Override
+    public void onValidationSucceeded(){
+        addPatient();
+    }
+
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(getActivity());
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void addPatient() {
+        firstName = mFirstName.getText().toString();
+        lastName = mLastName.getText().toString();
+        email = mEmail.getText().toString();
+        tempPass = mTempPassword.getText().toString();
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, tempPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()) {
+                    Patient.get(getActivity()).setUser(task.getResult().getUser());
+
+                    Map<String, Object> patient = new HashMap<>();
+                    patient.put("firstName", firstName);
+                    patient.put("lastName", lastName);
+
+                    FirebaseFirestore.getInstance().collection("patients").document(Patient.get(getActivity()).getUser().getUid())
+                            .set(patient)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getActivity(), "Patient added!.", Toast.LENGTH_LONG).show();
+                                        getActivity().finish();
+                                    } else {
+                                        Toast.makeText(getActivity(), "Error! Cannot add patient.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                }
+                else{
+                    Toast.makeText(getActivity(), "Error! Cannot create patient account.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 }
