@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import static android.content.ContentValues.TAG;
 import static com.google.firebase.database.FirebaseDatabase.getInstance;
 
 
@@ -90,48 +92,47 @@ public class HomePageFragment extends Fragment {
             }
         });
 
-        fetchPatient();
-
-
-
-
+        loadPatientData();
 
         return v;
     }
 
-    public void fetchPatient(){
+    public void loadPatientData() {
 
-        DocumentReference patientRef = mDatabase.collection("patients").document(mPatient.getUser().getUid());
+        DocumentReference patientRef = FirebaseFirestore.getInstance().collection("patients").document(mPatient.getUser().getUid());
 
         CollectionReference gfrScoresRef = patientRef.collection("GFRScores");
 
         patientRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
+           @Override
+           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+               if (task.isSuccessful()) {
+                   DocumentSnapshot document = task.getResult();
+                   if (document.exists()) {
+                       String fName = document.getString("firstName");
+                       String lName = document.getString("lastName");
+                       String ckdS = document.getString("ckdStage");
 
-                        String fName = document.getString("firstName");
-                        String lName = document.getString("lastName");
-                        String ckdS = document.getString("ckdStage");
+
+                       mPatient.setFirstName(fName);
+                       mPatient.setLastName(lName);
+                       mPatient.setCKDStage(ckdS);
 
 
-                        mPatient.setFirstName(fName);
-                        mPatient.setLastName(lName);
-                        mPatient.setCKDStage(ckdS);
+                       mWelcome.setText("Welcome back, " + mPatient.getFirstName() + ".");
+                       mCkdStage.setText("CKD Stage: " + mPatient.getCKDStage());
 
-                        mWelcome.setText("Welcome back, " + mPatient.getFirstName() + ".");
-                        mCkdStage.setText("CKD Stage: " + mPatient.getCKDStage());
-                    } else {
-                        mWelcome.setText("Error! Unable to retrieve data");
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+
+                   } else {
+                       Log.d(TAG, "No such user");
+                   }
+               } else {
+                   Log.d(TAG, "get failed with ", task.getException());
+               }
+
+           }
+       }
+        );
 
         gfrScoresRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -157,6 +158,8 @@ public class HomePageFragment extends Fragment {
                     }
 
                     mRecentScore.setText("Recent Score: " + mPatient.getMostRecentGFRScore().getScore());
+
+
                 }
                 else{
                     Log.d(TAG, "get failed with ", task.getException());
@@ -165,7 +168,8 @@ public class HomePageFragment extends Fragment {
 
 
         });
-
-
     }
+
+
+
 }
