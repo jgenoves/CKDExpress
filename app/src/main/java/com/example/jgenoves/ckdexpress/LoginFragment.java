@@ -87,39 +87,7 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
 
 
         mEmailText = (EditText) v.findViewById(R.id.login_email);
-        mEmailText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mPatient.setEmail(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         mPasswordText = (EditText) v.findViewById(R.id.login_password);
-        mPasswordText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                mPatient.setPassword(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         mLoginButton = (Button) v.findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +103,8 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
 
     @Override
     public void onValidationSucceeded(){
-        loginUser(mPatient.getEmail(), mPatient.getPassword());
+        System.out.println(mEmailText.getText().toString());
+        loginUser(mEmailText.getText().toString(), mPasswordText.getText().toString());
     }
 
     @Override
@@ -158,8 +127,6 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
         mPatient.getFirebaseAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                mPatient.setEmail("x");
-                mPatient.setPassword("x");
                 if (task.isSuccessful()) {
                     mPatient.setUser(task.getResult().getUser());
                     DocumentReference patientRef = FirebaseFirestore.getInstance().collection("patients").document(mPatient.getUser().getUid());
