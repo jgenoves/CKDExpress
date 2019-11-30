@@ -49,7 +49,8 @@ public class AdminHomePageFragment extends Fragment {
         mAddPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Hello!");
+                Intent i = AddPatientActivity.newIntent(getActivity());
+                startActivity(i);
             }
         });
 
