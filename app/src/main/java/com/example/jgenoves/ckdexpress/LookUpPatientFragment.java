@@ -8,6 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 public class LookUpPatientFragment extends Fragment {
@@ -32,7 +39,19 @@ public class LookUpPatientFragment extends Fragment {
         mGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                return;
+                DocumentReference patientRef = FirebaseFirestore.getInstance().collection("patients").document(mEnterPatientId.getText().toString());
+                patientRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            System.out.println("Found Patient!");
+                        }
+                        else{
+                            System.out.println("Did not find patient!");
+                        }
+                    }
+                });
             }
         });
 
