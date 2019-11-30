@@ -171,7 +171,19 @@ public class Patient {
 
     public void resetPatient(){
         mFirebaseAuth.signOut();
-        sPatient = null;
+
+        mEmail = "`x";
+        mPassword = "x";
+
+        mFirstName = "";
+        mLastName= "";
+        mCKDStage="";
+        mGfrScores = new ArrayList<EGFREntry>();
+        mBaseGFRLevel = 0;
+        mCheckupDue = false;
+        mNephVisitDue = false;
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mUser = mFirebaseAuth.getCurrentUser();
 
     }
 

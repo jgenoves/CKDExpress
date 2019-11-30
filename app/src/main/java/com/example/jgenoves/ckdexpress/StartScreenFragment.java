@@ -31,7 +31,7 @@ public class StartScreenFragment extends Fragment {
 
     private Patient mPatient;
 
-
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -51,6 +51,7 @@ public class StartScreenFragment extends Fragment {
 
                 }
                 else{
+
                     Intent intent = LoginActivity.newIntent(getActivity());
                     startActivity(intent);
                 }
