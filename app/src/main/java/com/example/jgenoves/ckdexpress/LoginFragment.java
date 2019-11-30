@@ -121,11 +121,12 @@ public class LoginFragment extends Fragment {
                                DocumentSnapshot document = task.getResult();
                                if (document.exists()) {
                                    if (document.getString("status") != null && document.get("status").equals("admin")) {
+                                       getActivity().finish();
                                        Intent intent = AdminHomePageActivity.newIntent(getActivity());
                                        startActivity(intent);
 
                                    } else {
-
+                                       getActivity().finish();
                                        Intent intent = HomePageActivity.newIntent(getActivity());
                                        startActivity(intent);
 
