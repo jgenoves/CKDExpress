@@ -66,8 +66,7 @@ public class AdminHomePageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Patient.get(getActivity()).resetPatient();
-                Intent intent = StartScreenActivity.newIntent(getActivity());
-                startActivity(intent);
+                getActivity().finish();
             }
         });
 
