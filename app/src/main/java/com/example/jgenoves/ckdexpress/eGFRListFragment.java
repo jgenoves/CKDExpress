@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class eGFRListFragment extends Fragment {
     }
 
     private void updateUI(){
-        List<EGFREntry> egfrEntries = Patient.get(getActivity()).getGfrScores();
+        ArrayList<EGFREntry> egfrEntries = Patient.get(getActivity()).sortListMostRecentScoreFirst();
         mAdapter = new EGFRAdapter(egfrEntries);
         mEGFRRecyclerView.setAdapter(mAdapter);
 

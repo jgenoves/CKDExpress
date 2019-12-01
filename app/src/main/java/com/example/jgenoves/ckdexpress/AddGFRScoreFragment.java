@@ -135,6 +135,7 @@ public class AddGFRScoreFragment extends Fragment implements Validator.Validatio
         EGFREntry e = new EGFREntry();
         double score = new Double(mAddScoreValue.getText().toString()).doubleValue();
 
+        e.setId(mPatient.getGfrScores().size());
         e.setScore(score);
         e.setDate(date);
         e.setLocation(mScoreLocation.getText().toString());
@@ -180,6 +181,7 @@ public class AddGFRScoreFragment extends Fragment implements Validator.Validatio
         }
         else if(thisActivity.getId() == 2){
             mPatient.changeGFRScore(e, 2);
+            mPatient.whatYouNeedPatient();
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(mPatient.getEmail(), mPatient.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -192,6 +194,8 @@ public class AddGFRScoreFragment extends Fragment implements Validator.Validatio
                         patient.put("firstName",  mPatient.getFirstName());
                         patient.put("lastName", mPatient.getLastName());
                         patient.put("dob", mPatient.getDOB());
+                        patient.put("ckdStage", mPatient.getCKDStage());
+                        patient.put("baseGFR", mPatient.getBaseGFRLevel());
                         patient.put("status", "patient");
 
                         FirebaseFirestore.getInstance().collection("patients").document(Patient.get(getActivity()).getUser().getUid())
@@ -206,6 +210,7 @@ public class AddGFRScoreFragment extends Fragment implements Validator.Validatio
                                                 score.put("gfrScore", e.getScore());
                                                 score.put("date", e.getDate());
                                                 score.put("location", e.getLocation());
+
 
                                                 UUID id = UUID.randomUUID();
                                                 FirebaseFirestore.getInstance().collection("patients").document(mPatient.getUser().getUid()).collection("GFRScores").document(id.toString())
