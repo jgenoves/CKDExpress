@@ -71,9 +71,11 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
 
     private String firstName = null;
     private String lastName = null;
+    @NotEmpty
     private Date dateOfBirth = new Date();
     private String email = null;
     private String tempPass = null;
+    private Patient mPatient;
 
     private static final int REQUEST_DATE = 0;
 
@@ -85,12 +87,16 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
         super.onCreate(savedInstanceState);
         validator = new Validator(this);
         validator.setValidationListener(this);
+        mPatient = Patient.get(getActivity());
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_patient, container, false);
+
+
+        mPatient.resetPatient();
 
         mAddPatientTitle = (TextView) v.findViewById(R.id.add_patient_title);
         mFirstName = (EditText) v.findViewById(R.id.add_patient_firstname);
@@ -161,38 +167,21 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
         email = mEmail.getText().toString();
         tempPass = mTempPassword.getText().toString();
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, tempPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        mPatient.setFirstName(firstName);
+        mPatient.setLastName(lastName);
 
-                if(task.isSuccessful()) {
-                    Patient.get(getActivity()).setUser(task.getResult().getUser());
+        mPatient.setEmail(email);
+        mPatient.setPassword(tempPass);
 
-                    Map<String, Object> patient = new HashMap<>();
-                    patient.put("firstName", firstName);
-                    patient.put("lastName", lastName);
-                    patient.put("dob", dateOfBirth);
-                    patient.put("status", "patient");
-                    
+        for(int i = 0; i < 3; i ++){
+            EGFREntry e = new EGFREntry();
+            mPatient.addGFRScore(e);
+        }
 
-                    FirebaseFirestore.getInstance().collection("patients").document(Patient.get(getActivity()).getUser().getUid())
-                            .set(patient)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(getActivity(), "Patient added!.", Toast.LENGTH_LONG).show();
-                                        getActivity().finish();
-                                    } else {
-                                        Toast.makeText(getActivity(), "Error! Cannot add patient.", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                }
-                else{
-                    Toast.makeText(getActivity(), "Error! Cannot create patient account.", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        Intent intent = AddGFRScoreActivity.newIntent(getActivity(),0);
+        startActivity(intent);
+
+
+
     }
 }

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class EGFREntry implements Serializable {
 
-    private String mId;
+    private int mId;
     private double mScore;
     private Date mDate;
 
@@ -16,7 +16,7 @@ public class EGFREntry implements Serializable {
     private String mLocation;
 
     public EGFREntry() {
-        mId = "";
+        mId = -1;
         mScore = 0.0;
         mDate = new Date();
         mLocation = "";
@@ -30,11 +30,11 @@ public class EGFREntry implements Serializable {
         mLocation = location;
     }
 
-    public String getId() {
+    public int getId() {
         return mId;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         mId = id;
     }
 
