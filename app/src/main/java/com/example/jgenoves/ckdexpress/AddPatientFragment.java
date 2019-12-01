@@ -175,6 +175,7 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
 
         for(int i = 0; i < 3; i ++){
             EGFREntry e = new EGFREntry();
+            e.setId(i);
             mPatient.addGFRScore(e);
         }
 
