@@ -15,6 +15,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobsandgeeks.saripaar.Validator;
 
 import java.util.Date;
 import java.util.List;
@@ -32,12 +33,18 @@ public class StartScreenFragment extends Fragment {
     private Patient mPatient;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        mPatient = Patient.get(getActivity());
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_start_screen, container, false);
 
-        mPatient = Patient.get(getActivity());
         mPatient.setUser(null);
         mLoginButton = (Button) v.findViewById(R.id.ss_login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {

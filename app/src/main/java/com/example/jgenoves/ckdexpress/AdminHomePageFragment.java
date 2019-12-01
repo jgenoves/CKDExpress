@@ -33,6 +33,7 @@ public class AdminHomePageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        mPatient = Patient.get(getActivity());
 
     }
 
@@ -40,7 +41,6 @@ public class AdminHomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_admin_home, container, false);
 
-        mPatient = Patient.get(getActivity());
 
 
         mWelcomeText = (TextView) v.findViewById(R.id.admin_welcome_text);
