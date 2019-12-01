@@ -3,6 +3,7 @@ package com.example.jgenoves.ckdexpress;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.core.app.NotificationCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -24,10 +25,16 @@ public class notificationActivity extends AppCompatActivity {
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();
+
+
         }
 
 
+
+
     }
+
+
 
     public static Intent newIntent(Context packageContext){
         Intent intent = new Intent(packageContext, notificationActivity.class);

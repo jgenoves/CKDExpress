@@ -1,5 +1,6 @@
 package com.example.jgenoves.ckdexpress;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.graphics.Color;
-
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import org.w3c.dom.Text;
 
 import androidx.fragment.app.Fragment;
@@ -41,7 +44,7 @@ public class notificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //need to mkae up fragment notification
         View v = inflater.inflate(R.layout.fragment_notifications, container, false);
-        testGFR = 4;
+        testGFR = 1;
 
 //        mLineBreak_1 = (View) v.findViewById(R.id.line_break1);
 //
@@ -57,6 +60,16 @@ public class notificationFragment extends Fragment {
 
             mNotificationMessages.setTextColor(Color.DKGRAY);
             mNotificationTitle.setTextColor(Color.GREEN);
+
+
+//            NotificationManager notif=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//            Notification notify=new Notification.Builder
+//                    (getApplicationContext()).setContentTitle(tittle).setContentText(body).
+//                    setContentTitle(subject).setSmallIcon(R.drawable.abc).build();
+//
+//            notify.flags |= Notification.FLAG_AUTO_CANCEL;
+//            notif.notify(0, notify);
+
         }else if(testGFR == 2){
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
             mNotificationTitle.setText("Schedule an appointment with your doctor soon");
@@ -68,6 +81,7 @@ public class notificationFragment extends Fragment {
             mNotificationMessages.setTextColor(Color.DKGRAY);
             //TODO:: make any/all of these colors statics in XML
             mNotificationTitle.setTextColor(Color.rgb(199, 79, 23));
+
         }else if (testGFR == 3) {
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
             mNotificationTitle.setText("See your doctor ASAP");
