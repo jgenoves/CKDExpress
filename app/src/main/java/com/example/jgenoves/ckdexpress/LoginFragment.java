@@ -69,6 +69,7 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
         super.onCreate(savedInstanceState);
         validator = new Validator(this);
         validator.setValidationListener(this);
+        mPatient = Patient.get(getActivity());
     }
 
     @Override
@@ -76,7 +77,7 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-        mPatient = Patient.get(getActivity());
+
 
 
 
@@ -103,7 +104,6 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
 
     @Override
     public void onValidationSucceeded(){
-        System.out.println(mEmailText.getText().toString());
         loginUser(mEmailText.getText().toString(), mPasswordText.getText().toString());
     }
 

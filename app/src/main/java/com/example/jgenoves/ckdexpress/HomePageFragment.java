@@ -59,6 +59,7 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        mPatient = Patient.get(getActivity());
 
     }
 
@@ -67,7 +68,7 @@ public class HomePageFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mPatient = Patient.get(getActivity());
+
         mDatabase = FirebaseFirestore.getInstance();
         mWelcome = (TextView) v.findViewById(R.id.welcome_text);
         mLineBreak_1 = (View) v.findViewById(R.id.line_break1);

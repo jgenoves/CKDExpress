@@ -16,6 +16,10 @@ public class Patient {
 
 
 
+    private Date mDOB;
+    private String mEmail;
+    private String mPassword;
+
     private String mFirstName;
     private String mLastName;
     private String mCKDStage;
@@ -38,6 +42,11 @@ public class Patient {
 
     public Patient(Context context){
 
+        mDOB = null;
+
+        mEmail = "";
+        mPassword = "";
+
         mFirstName = "";
         mLastName= "";
         mCKDStage="";
@@ -51,6 +60,32 @@ public class Patient {
 
 
     }
+
+    public Date getDOB() {
+        return mDOB;
+    }
+
+    public void setDOB(Date DOB) {
+        mDOB = DOB;
+    }
+
+
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public void setEmail(String email) {
+        mEmail = email;
+    }
+
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
 
     public FirebaseAuth getFirebaseAuth() {
         return mFirebaseAuth;
@@ -128,12 +163,19 @@ public class Patient {
 
 
     public void addGFRScore(EGFREntry e){
+        e.setId(mGfrScores.size());
         mGfrScores.add(e);
     }
 
-    public EGFREntry getGFRScore(UUID id){
+    public void changeGFRScore(EGFREntry newEntry, int id){
+        mGfrScores.get(id).setScore(newEntry.getScore());
+        mGfrScores.get(id).setDate(newEntry.getDate());
+        mGfrScores.get(id).setLocation(newEntry.getLocation());
+    }
+
+    public EGFREntry getGFRScore(int id){
         for(EGFREntry e:mGfrScores){
-            if(e.getId().equals(id)){
+            if(e.getId() == (id)){
                 return e;
             }
 
@@ -152,6 +194,11 @@ public class Patient {
     public void resetPatient(){
         mFirebaseAuth.signOut();
 
+        mDOB = null;
+
+        mEmail = "";
+        mPassword = "";
+
         mFirstName = "";
         mLastName= "";
         mCKDStage="";
@@ -159,7 +206,6 @@ public class Patient {
         mBaseGFRLevel = 0;
         mCheckupDue = false;
         mNephVisitDue = false;
-        mFirebaseAuth = FirebaseAuth.getInstance();
         mUser = mFirebaseAuth.getCurrentUser();
 
     }
