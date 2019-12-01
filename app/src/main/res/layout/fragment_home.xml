@@ -78,20 +78,19 @@
         app:layout_constraintStart_toStartOf="parent" />
         android:textStyle="bold" />
 <!--this was the button i added I'll fix it later-->
+
     <Button
         android:id="@+id/to_notifications_button"
         android:layout_width="195dp"
         android:layout_height="47dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="112dp"
         android:background="#757373"
         android:text="@string/notification_button_title"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
