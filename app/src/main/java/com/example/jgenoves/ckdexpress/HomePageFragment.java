@@ -156,10 +156,13 @@ public class HomePageFragment extends Fragment {
                         Log.d(TAG, "DocumentSnapshot data: " + s.getData());
                         EGFREntry e = new EGFREntry();
 
+                        double id = s.getDouble("id");
+                        int i = (int) id;
                         double score = s.getDouble("gfrScore");
                         Date date = s.getDate("date");
                         String location = s.getString("location");
 
+                        e.setId(i);
                         e.setScore(score);
                         e.setDate(date);
                         e.setLocation(location);
@@ -167,6 +170,9 @@ public class HomePageFragment extends Fragment {
                         mPatient.addGFRScore(e);
 
                     }
+
+                    mPatient.isACheckupDue();
+                    mPatient.isNephDue();
 
                     mRecentScore.setText("Recent Score: " + mPatient.getMostRecentGFRScore().getScore());
 

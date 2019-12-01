@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class EGFREntry implements Serializable {
+public class EGFREntry implements Comparable<EGFREntry> {
 
     private int mId;
     private double mScore;
@@ -55,9 +55,29 @@ public class EGFREntry implements Serializable {
     }
 
 
+    @Override
+    public int compareTo(EGFREntry e) {
+
+
+        if(mId < e.getId()){
+            return -1;
+        }
+        else if(mId == getId()){
+            return 0;
+        }
+        else if(mId > getId()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+
+    }
 
 
 
 
-    
+
+
+
 }

@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+import java.util.Collections;
 
 public class Patient {
 
@@ -17,13 +17,14 @@ public class Patient {
 
 
     private Date mDOB;
+
     private String mEmail;
     private String mPassword;
 
     private String mFirstName;
     private String mLastName;
     private String mCKDStage;
-    private List<EGFREntry> mGfrScores;
+    private ArrayList<EGFREntry> mGfrScores;
     private double mBaseGFRLevel;
     private boolean mCheckupDue;
     private boolean mNephVisitDue;
@@ -128,11 +129,11 @@ public class Patient {
         mLastName = name;
     }
 
-    public List<EGFREntry> getGfrScores() {
+    public ArrayList<EGFREntry> getGfrScores() {
         return mGfrScores;
     }
 
-    public void setGfrScores(List<EGFREntry> gfrScores) {
+    public void setGfrScores(ArrayList<EGFREntry> gfrScores) {
         mGfrScores = gfrScores;
     }
 
@@ -160,10 +161,13 @@ public class Patient {
         mNephVisitDue = nephVisitDue;
     }
 
-
+    public ArrayList<EGFREntry> sortListMostRecentScoreFirst(){
+        ArrayList<EGFREntry> copy = mGfrScores;
+        Collections.sort(copy, Collections.reverseOrder());
+        return copy;
+    }
 
     public void addGFRScore(EGFREntry e){
-        e.setId(mGfrScores.size());
         mGfrScores.add(e);
     }
 
@@ -208,6 +212,100 @@ public class Patient {
         mNephVisitDue = false;
         mUser = mFirebaseAuth.getCurrentUser();
 
+    }
+
+
+
+
+
+
+    public void whatYouNeedPatient() {
+        EGFREntry egfrEntry1 = mGfrScores.get(mGfrScores.size()-3);;
+        EGFREntry egfrEntry2 = mGfrScores.get(mGfrScores.size()-2);;
+        EGFREntry egfrEntry3 = mGfrScores.get(mGfrScores.size()-1);;
+
+        mBaseGFRLevel = (egfrEntry1.getScore() + egfrEntry2.getScore() + egfrEntry3.getScore())/3;
+
+        //if EGFR < 30 they are not included in the system and go striaght to neph
+        if (egfrEntry3.getScore() < 30) {
+            mNephVisitDue = true;
+            if(egfrEntry3.getScore() < 15){
+                mCKDStage = "Stage 5";
+            }else{
+                mCKDStage = "Stage 4";
+            }
+        }
+        else{
+            //Determine what stage CKD they are in
+            if (mBaseGFRLevel > 90) {
+                mCKDStage = "Stage 1";
+            }
+            else if (mBaseGFRLevel >= 60 && mBaseGFRLevel <= 90){
+                mCKDStage = "Stage 2";
+            }
+            else if (mBaseGFRLevel >= 45 && mBaseGFRLevel < 60){
+                //its actually 3a, but seems easier to just use 1-6 and not 3a and 3b
+                mCKDStage = "Stage 3a";
+            }
+            else{
+                //is actually 3B, 4 and 5 are not included in the system
+                mCKDStage = "Stage 3b";
+            }
+
+        }
+
+
+
+    }
+
+    public void isNephDue(){
+        EGFREntry lastEgfrEntry = mGfrScores.get(mGfrScores.size()-1);
+
+        if (mCKDStage.equals("Stage 1")){
+            if ((mBaseGFRLevel - lastEgfrEntry.getScore() ) >= 10){
+                mNephVisitDue = true;
+            }
+        }
+        else if (mCKDStage.equals("Stage 2")){
+            if ((mBaseGFRLevel - lastEgfrEntry.getScore() ) >= 7.5){
+                mNephVisitDue = true;
+            }
+        }
+        //3a
+        else if (mCKDStage.equals("Stage 3a")){
+            if ((mBaseGFRLevel - lastEgfrEntry.getScore() ) >= 10){
+                mNephVisitDue = true;
+            }
+        }
+        //3b
+        else if (mCKDStage.equals("Stage 3b")){
+            if ((mBaseGFRLevel - lastEgfrEntry.getScore() ) >= 5){
+                mNephVisitDue = true;
+            }
+        }
+    }
+
+    public void isACheckupDue(){
+        EGFREntry lastEgfrEntry = mGfrScores.get(mGfrScores.size()-1);;
+        Date today = new Date();
+        long timeSince = today.getTime() - lastEgfrEntry.getDate().getTime();
+        if (mCKDStage.equals("Stage 1")|| mCKDStage.equals("Stage 2")){
+            if (timeSince > 15552000000L){
+                mCheckupDue = true;
+            }
+        }
+        //really 3a
+        else if (mCKDStage.equals("Stage 3a")){
+            if (timeSince > 7776000000L){
+                mCheckupDue = true;
+            }
+        }
+        //really 3b
+        else if (mCKDStage.equals("Stage 3b")) {
+            if (timeSince > 5184000000L){
+                mCheckupDue = true;
+            }
+        }
     }
 
 
