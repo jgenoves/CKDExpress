@@ -10,25 +10,67 @@
 
     <TextView
         android:id="@+id/welcome_text"
-        android:layout_width="374dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="15dp"
+        android:breakStrategy="simple"
+        android:paddingBottom="30dp"
         android:text="@string/welccome_message"
         android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30dp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/to_egfr_scores_button"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/to_notifications_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.726" />
+
+    <Button
+        android:id="@+id/to_egfr_scores_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:background="#86BFFF"
+        android:text="@string/gfrscores_button_title"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/summary_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/to_notifications_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="#86BFFF"
+        android:text="@string/notification_button_title"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/to_egfr_scores_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/summary_title"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="24dp"
+        android:paddingTop="20dp"
         android:text="@string/summary_title"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/ckd_level"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/line_break1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
@@ -46,36 +88,20 @@
         android:id="@+id/recent_score"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/recent_score"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ckd_level"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/ckd_stage"
         app:layout_constraintBottom_toTopOf="@+id/recent_score"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/to_egfr_scores_button"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_title"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/summary_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/sign_out"

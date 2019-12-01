@@ -139,7 +139,6 @@ public class LoginFragment extends Fragment implements Validator.ValidationListe
                                    if (document.getString("status") != null && document.get("status").equals("admin")) {
                                        getActivity().finish();
                                        Intent intent = AdminHomePageActivity.newIntent(getActivity());
-                                       intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                        startActivity(intent);
 
                                    } else {
