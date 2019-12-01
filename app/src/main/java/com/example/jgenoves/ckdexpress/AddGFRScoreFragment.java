@@ -194,6 +194,7 @@ public class AddGFRScoreFragment extends Fragment {
                                                     Toast.makeText(getActivity(), "Patient added!.", Toast.LENGTH_LONG).show();
                                                     Intent intent = new AdminHomePageActivity().newIntent(getActivity());
                                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                                     startActivity(intent);
 
                                                 } else {
