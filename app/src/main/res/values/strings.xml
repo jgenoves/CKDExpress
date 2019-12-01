@@ -25,6 +25,7 @@
     <string name="add">Add</string>
 
     <string name="add_gfr_score">Add GFR Score: </string>
+    <string name="next">Next</string>
 
     <string name="look_up_patient">Look up a Patient: </string>
     <string name="enter_patient_id">Enter Patient Id: </string>
