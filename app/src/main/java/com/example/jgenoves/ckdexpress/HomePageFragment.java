@@ -49,6 +49,7 @@ public class HomePageFragment extends Fragment {
     private TextView mRecentScore;
     private TextView mCkdStage;
     private Button mNavButton;
+    private Button mNotificationButton;
     private TextView mSignOut;
 
     private static final String TAG = "HomePageFragment";
@@ -94,14 +95,14 @@ public class HomePageFragment extends Fragment {
 
         loadPatientData();
 
-//        mNotificationButton = (Button) v.findViewById(R.id.to_notifications_button);
-//        mNotificationButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = notificationActivity.newIntent(getActivity());
-//                startActivity(intent);
-//            }
-//        });
+        mNotificationButton = (Button) v.findViewById(R.id.to_notifications_button);
+        mNotificationButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = notificationActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
 
 
 
