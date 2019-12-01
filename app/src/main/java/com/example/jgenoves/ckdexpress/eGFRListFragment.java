@@ -75,6 +75,7 @@ public class eGFRListFragment extends Fragment {
         private TextView mScoreTextView;;
         private TextView mDateTextView;
         private TextView mLocationTextView;
+        private TextView mScoreHeader;
 
         public EGFRHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_egfr_entry, parent, false));
@@ -83,6 +84,7 @@ public class eGFRListFragment extends Fragment {
             mDateTextView = (TextView) itemView.findViewById(R.id.egfr_date);
             mLocationTextView = (TextView) itemView.findViewById(R.id.egfr_location);
 
+            mScoreHeader = (TextView) itemView.findViewById(R.id.score_title);
 
         }
 
@@ -96,6 +98,7 @@ public class eGFRListFragment extends Fragment {
             mDateTextView.setText("Date: " + d);
 
             mLocationTextView.setText("Location: \n" + mEGFREntry.getLocation());
+            mScoreHeader.setText("Entry #"+mEGFREntry.getId());
         }
 
         public void onClick(View v){

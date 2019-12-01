@@ -7,7 +7,8 @@
     <string name="gfrscores_button_title">My GFR Scores</string>
     <string name="sign_out">Sign Out</string>
     <string name="score">Score: </string>
-    <string name="location">Location</string>
+    <string name="entry_placeholder">Entry ##</string>
+    <string name="location">Location: </string>
     <string name="date">Date: </string>
     <string name="go">GO</string>
     <string name="email">Email</string>
