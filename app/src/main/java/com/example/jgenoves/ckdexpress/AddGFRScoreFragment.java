@@ -72,7 +72,6 @@ public class AddGFRScoreFragment extends Fragment {
         mScoreLocation = (EditText) v.findViewById(R.id.add_score_location);
         mNext = (Button) v.findViewById(R.id.add_gfr_score_btn);
 
-        System.out.println(thisActivity.getId());
         switch(thisActivity.getId()){
             case -1:
                 mAddGFRScoreTitle.setText("Add GFR Score: ");
