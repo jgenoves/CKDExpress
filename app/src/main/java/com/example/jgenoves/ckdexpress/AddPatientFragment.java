@@ -169,7 +169,7 @@ public class AddPatientFragment extends Fragment implements Validator.Validation
 
         mPatient.setFirstName(firstName);
         mPatient.setLastName(lastName);
-
+        mPatient.setDOB(dateOfBirth);
         mPatient.setEmail(email);
         mPatient.setPassword(tempPass);
 
