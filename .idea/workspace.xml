@@ -11,9 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c56c5e4-b74a-47c8-ad87-956685c03207" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_egfr_entry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_egfr_entry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,26 +58,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/Patient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="293" column="32" selection-start-line="293" selection-start-column="32" selection-end-line="293" selection-end-column="32" />
+            <state relative-caret-position="151">
+              <caret line="266" selection-start-line="266" selection-end-line="266" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3831#3832#0" expanded="true" />
                 <element signature="e#3889#3890#0" expanded="true" />
                 <element signature="e#3944#3945#0" expanded="true" />
                 <element signature="e#4002#4003#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/pushNotification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#1553#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,40 +130,60 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="179" column="41" lean-forward="true" selection-start-line="179" selection-start-column="41" selection-end-line="179" selection-end-column="41" />
+            <state relative-caret-position="284">
+              <caret line="139" column="86" lean-forward="true" selection-start-line="139" selection-start-column="86" selection-end-line="139" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2654#2883#0" expanded="true" />
-                <element signature="e#2882#2883#0" expanded="true" />
-                <element signature="e#2495#2713#0" expanded="true" />
-                <element signature="e#2712#2713#0" expanded="true" />
-                <element signature="e#2877#3109#0" expanded="true" />
-                <element signature="e#3108#3109#0" expanded="true" />
-                <element signature="e#3436#4507#0" expanded="true" />
-                <element signature="e#4506#4507#0" expanded="true" />
-                <element signature="e#4569#6011#0" expanded="true" />
-                <element signature="e#6010#6011#0" expanded="true" />
+                <element signature="e#2736#2965#0" expanded="true" />
+                <element signature="e#2964#2965#0" expanded="true" />
+                <element signature="e#3065#3283#0" expanded="true" />
+                <element signature="e#3282#3283#0" expanded="true" />
+                <element signature="e#3420#3652#0" expanded="true" />
+                <element signature="e#3651#3652#0" expanded="true" />
+                <element signature="e#3980#5702#0" expanded="true" />
+                <element signature="e#5701#5702#0" expanded="true" />
+                <element signature="e#5764#7168#0" expanded="true" />
+                <element signature="e#7167#7168#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-29/android.jar!/android/os/Looper.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="111" column="106" selection-start-line="111" selection-start-column="106" selection-end-line="111" selection-end-column="106" />
+            <state relative-caret-position="170">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+              <folding>
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#702#703#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_content_paste_red.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="111" column="106" lean-forward="true" selection-start-line="111" selection-end-line="112" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -221,7 +235,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/LookUpPatientFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/AdminHomePageFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/AddGFRScoreActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_gfr_score.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_patient.xml" />
@@ -239,9 +252,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_start_screen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_egfr_entry.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java" />
       </list>
     </option>
   </component>
@@ -549,8 +563,8 @@
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49969897" weight="0.32876712" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49909693" weight="0.32876712" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49969897" weight="0.32876712" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49969897" weight="0.32876712" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49789283" visible="true" weight="0.28767124" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49969897" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49789283" weight="0.28767124" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.500301" side_tool="true" weight="0.32876712" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49789283" weight="0.32876712" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49668875" weight="0.2938979" />
@@ -566,6 +580,16 @@
     </layout>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java</url>
+          <line>190</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
         <watch expression="dbRef.params.indexStartValue" />
@@ -582,7 +606,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation_drawer.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -754,16 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/EGFREntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -911,20 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="293" column="32" selection-start-line="293" selection-start-column="32" selection-end-line="293" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3831#3832#0" expanded="true" />
-            <element signature="e#3889#3890#0" expanded="true" />
-            <element signature="e#3944#3945#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_content_paste_red.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -964,26 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="179" column="41" lean-forward="true" selection-start-line="179" selection-start-column="41" selection-end-line="179" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2654#2883#0" expanded="true" />
-            <element signature="e#2882#2883#0" expanded="true" />
-            <element signature="e#2495#2713#0" expanded="true" />
-            <element signature="e#2712#2713#0" expanded="true" />
-            <element signature="e#2877#3109#0" expanded="true" />
-            <element signature="e#3108#3109#0" expanded="true" />
-            <element signature="e#3436#4507#0" expanded="true" />
-            <element signature="e#4506#4507#0" expanded="true" />
-            <element signature="e#4569#6011#0" expanded="true" />
-            <element signature="e#6010#6011#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_egfr_entry.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1000,7 +979,62 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/eGFRListFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
-          <caret line="111" column="106" selection-start-line="111" selection-start-column="106" selection-end-line="111" selection-end-column="106" />
+          <caret line="111" column="106" lean-forward="true" selection-start-line="111" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/StartScreenFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-29/android.jar!/android/os/Looper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding>
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="266" selection-start-line="266" selection-end-line="266" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3831#3832#0" expanded="true" />
+            <element signature="e#3889#3890#0" expanded="true" />
+            <element signature="e#3944#3945#0" expanded="true" />
+            <element signature="e#4002#4003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jgenoves/ckdexpress/HomePageFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="139" column="86" lean-forward="true" selection-start-line="139" selection-start-column="86" selection-end-line="139" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2736#2965#0" expanded="true" />
+            <element signature="e#2964#2965#0" expanded="true" />
+            <element signature="e#3065#3283#0" expanded="true" />
+            <element signature="e#3282#3283#0" expanded="true" />
+            <element signature="e#3420#3652#0" expanded="true" />
+            <element signature="e#3651#3652#0" expanded="true" />
+            <element signature="e#3980#5702#0" expanded="true" />
+            <element signature="e#5701#5702#0" expanded="true" />
+            <element signature="e#5764#7168#0" expanded="true" />
+            <element signature="e#7167#7168#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

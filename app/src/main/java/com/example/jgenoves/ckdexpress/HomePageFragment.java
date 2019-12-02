@@ -79,6 +79,8 @@ public class HomePageFragment extends Fragment {
         mCkdStage = (TextView) v.findViewById(R.id.ckd_stage);
         mBaseGFRScore = (TextView) v.findViewById(R.id.base_gfr_score);
 
+        loadPatientData();
+
         mNavButton = (Button) v.findViewById(R.id.to_egfr_scores_button);
         mNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +98,6 @@ public class HomePageFragment extends Fragment {
             }
         });
 
-        loadPatientData();
 
         mNotificationButton = (Button) v.findViewById(R.id.to_notifications_button);
         mNotificationButton.setOnClickListener(new View.OnClickListener(){
@@ -106,6 +107,7 @@ public class HomePageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
         return v;
     }
@@ -138,6 +140,14 @@ public class HomePageFragment extends Fragment {
                        mWelcome.setText("Welcome back, " + mPatient.getFirstName() + ".");
                        mCkdStage.setText(mPatient.getCKDStage());
                        mBaseGFRScore.setText(Double.toString(baseGfr));
+
+                       mPatient.isNephDue();
+
+                       if(mPatient.isNephVisitDue()){
+                           mRecentScore.setTextColor(Color.RED);
+                           Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
+                           mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
+                       }
 
 
                    } else {
@@ -178,16 +188,11 @@ public class HomePageFragment extends Fragment {
                     }
 
                     mPatient.isACheckupDue();
-                    mPatient.isNephDue();
+
 
 
 
                     mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
-                    if(mPatient.isNephVisitDue()){
-                        mRecentScore.setTextColor(Color.RED);
-                        Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
-                        mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
-                    }
 
 
                 }
