@@ -2,8 +2,10 @@
     <string name="app_name">CKD Express</string>
     <string name="welccome_message">Loading...</string>
     <string name="summary_title">Summary:</string>
-    <string name="recent_score">Loading...</string>
-    <string name="ckd_stage">Loading...</string>
+    <string name="recent_score_title">Recent Score: </string>
+    <string name="ckd_stage_title">CKD Stage: </string>
+    <string name="base_gfr_score_title">Base GFR Score: </string>
+    <string name="loading">Loading...</string>
     <string name="gfrscores_button_title">My GFR Scores</string>
     <string name="sign_out">Sign Out</string>
     <string name="score">Score: </string>

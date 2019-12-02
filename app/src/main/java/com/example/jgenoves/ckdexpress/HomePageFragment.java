@@ -8,26 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-
-import org.w3c.dom.Document;
 
 import java.util.Date;
 import java.util.List;
@@ -35,7 +25,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import static android.content.ContentValues.TAG;
 import static com.google.firebase.database.FirebaseDatabase.getInstance;
 
 
@@ -45,8 +34,15 @@ public class HomePageFragment extends Fragment {
     private View mLineBreak_1;
     private TextView mWelcome;
     private TextView mSummaryTitle;
+
+    private TextView mRecentScoreTitle;
+    private TextView mCkdStageTitle;
+    private TextView mBaseGFRScoreTitle;
+
     private TextView mRecentScore;
     private TextView mCkdStage;
+    private TextView mBaseGFRScore;
+
     private Button mNavButton;
     private Button mNotificationButton;
     private TextView mSignOut;
@@ -73,8 +69,14 @@ public class HomePageFragment extends Fragment {
         mWelcome = (TextView) v.findViewById(R.id.welcome_text);
         mLineBreak_1 = (View) v.findViewById(R.id.line_break1);
         mSummaryTitle = (TextView) v.findViewById(R.id.summary_title);
+        mRecentScoreTitle = (TextView) v.findViewById(R.id.recent_score_title);
+        mCkdStageTitle = (TextView) v.findViewById(R.id.ckd_stage_title);
+        mBaseGFRScoreTitle = (TextView) v.findViewById(R.id.base_gfr_score_title);
+
         mRecentScore = (TextView) v.findViewById(R.id.recent_score);
-        mCkdStage = (TextView) v.findViewById(R.id.ckd_level);
+        mCkdStage = (TextView) v.findViewById(R.id.ckd_stage);
+        mBaseGFRScore = (TextView) v.findViewById(R.id.base_gfr_score);
+
         mNavButton = (Button) v.findViewById(R.id.to_egfr_scores_button);
         mNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,15 +123,19 @@ public class HomePageFragment extends Fragment {
                        String fName = document.getString("firstName");
                        String lName = document.getString("lastName");
                        String ckdS = document.getString("ckdStage");
+                       double baseGfr = document.getDouble("baseGFR");
 
+                       baseGfr = Math.round(baseGfr);
 
+                       mPatient.setBaseGFRLevel(baseGfr);
                        mPatient.setFirstName(fName);
                        mPatient.setLastName(lName);
                        mPatient.setCKDStage(ckdS);
 
 
                        mWelcome.setText("Welcome back, " + mPatient.getFirstName() + ".");
-                       mCkdStage.setText("CKD Stage: " + mPatient.getCKDStage());
+                       mCkdStage.setText(mPatient.getCKDStage());
+                       mBaseGFRScore.setText(Double.toString(baseGfr));
 
 
                    } else {
@@ -172,7 +178,7 @@ public class HomePageFragment extends Fragment {
                     mPatient.isACheckupDue();
                     mPatient.isNephDue();
 
-                    mRecentScore.setText("Recent Score: " + mPatient.getMostRecentGFRScore().getScore());
+                    mRecentScore.setText("" + mPatient.getMostRecentGFRScore().getScore());
 
 
                 }
