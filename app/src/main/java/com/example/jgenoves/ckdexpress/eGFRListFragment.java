@@ -3,6 +3,7 @@ package com.example.jgenoves.ckdexpress;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static android.graphics.drawable.Drawable.createFromPath;
 
 public class eGFRListFragment extends Fragment {
 
@@ -38,6 +41,8 @@ public class eGFRListFragment extends Fragment {
         mEGFRRecyclerView = (RecyclerView) v.findViewById(R.id.egfr_list_recycler_view);
         mEGFRRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        System.out.println(Patient.get(getActivity()).isNephVisitDue());
+
 
         return v;
 
@@ -49,7 +54,7 @@ public class eGFRListFragment extends Fragment {
     }
 
     private void updateUI(){
-        ArrayList<EGFREntry> egfrEntries = Patient.get(getActivity()).sortListMostRecentScoreFirst();
+        ArrayList<EGFREntry> egfrEntries = Patient.get(getActivity()).getGfrScores();
         mAdapter = new EGFRAdapter(egfrEntries);
         mEGFRRecyclerView.setAdapter(mAdapter);
 
@@ -75,7 +80,6 @@ public class eGFRListFragment extends Fragment {
         private TextView mScoreTextView;;
         private TextView mDateTextView;
         private TextView mLocationTextView;
-        private TextView mScoreHeader;
 
         public EGFRHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_egfr_entry, parent, false));
@@ -84,21 +88,27 @@ public class eGFRListFragment extends Fragment {
             mDateTextView = (TextView) itemView.findViewById(R.id.egfr_date);
             mLocationTextView = (TextView) itemView.findViewById(R.id.egfr_location);
 
-            mScoreHeader = (TextView) itemView.findViewById(R.id.score_title);
 
         }
 
         public void bind(EGFREntry egfrEntry){
             mEGFREntry = egfrEntry;
-            mScoreTextView.setText("Level: " + Double.toString(mEGFREntry.getScore()));
+            mScoreTextView.setText("" + Double.toString(mEGFREntry.getScore()));
 
             Date date = mEGFREntry.getDate();
             SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yyyy");
             String d = formatter.format(date);
-            mDateTextView.setText("Date: " + d);
+            mDateTextView.setText("" + d);
 
             mLocationTextView.setText("Location: \n" + mEGFREntry.getLocation());
-            mScoreHeader.setText("Entry #"+mEGFREntry.getId());
+
+            System.out.println(Patient.get(getActivity()).getMostRecentGFRScore().getId() + " " + mEGFREntry.getId());
+
+            if(Patient.get(getActivity()).isNephVisitDue()){
+                if(mEGFREntry.getId() == Patient.get(getActivity()).getFirstGFRScore().getId()){
+                    mScoreTextView.setTextColor(Color.RED);
+                }
+            }
         }
 
         public void onClick(View v){
@@ -143,7 +153,7 @@ public class eGFRListFragment extends Fragment {
             }
             else
             {
-                holder.itemView.setBackgroundColor(Color.parseColor("#E7E7E7"));
+                holder.itemView.setBackgroundColor(Color.parseColor("#ebf4fa"));
                 //  holder.imageView.setBackgroundColor(Color.parseColor("#FFFAF8FD"));
             }
 

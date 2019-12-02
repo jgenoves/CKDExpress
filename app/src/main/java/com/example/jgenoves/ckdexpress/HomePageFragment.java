@@ -1,6 +1,7 @@
 package com.example.jgenoves.ckdexpress;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -178,7 +179,12 @@ public class HomePageFragment extends Fragment {
                     mPatient.isACheckupDue();
                     mPatient.isNephDue();
 
-                    mRecentScore.setText("" + mPatient.getMostRecentGFRScore().getScore());
+
+
+                    mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
+                    if(mPatient.isNephVisitDue()){
+                        mRecentScore.setTextColor(Color.RED);
+                    }
 
 
                 }

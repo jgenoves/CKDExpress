@@ -191,6 +191,10 @@ public class Patient {
         return mGfrScores.get(mGfrScores.size()-1);
     }
 
+    public EGFREntry getFirstGFRScore(){
+        return mGfrScores.get(0);
+    }
+
     public void resetScores(){
         mGfrScores = new ArrayList<EGFREntry>();
     }
@@ -228,7 +232,6 @@ public class Patient {
 
         //if EGFR < 30 they are not included in the system and go striaght to neph
         if (egfrEntry3.getScore() < 30) {
-            mNephVisitDue = true;
             if(egfrEntry3.getScore() < 15){
                 mCKDStage = "Stage 5";
             }else{
@@ -259,7 +262,7 @@ public class Patient {
     }
 
     public void isNephDue(){
-        EGFREntry lastEgfrEntry = mGfrScores.get(mGfrScores.size()-1);
+        EGFREntry lastEgfrEntry = mGfrScores.get(0);
 
         if (mCKDStage.equals("Stage 1")){
             if ((mBaseGFRLevel - lastEgfrEntry.getScore() ) >= 10){
@@ -283,10 +286,13 @@ public class Patient {
                 mNephVisitDue = true;
             }
         }
+        else if(mCKDStage.equals("Stage 4") || mCKDStage.equals("Stage 5")){
+            mNephVisitDue = true;
+        }
     }
 
     public void isACheckupDue(){
-        EGFREntry lastEgfrEntry = mGfrScores.get(mGfrScores.size()-1);;
+        EGFREntry lastEgfrEntry = mGfrScores.get(0);;
         Date today = new Date();
         long timeSince = today.getTime() - lastEgfrEntry.getDate().getTime();
         if (mCKDStage.equals("Stage 1")|| mCKDStage.equals("Stage 2")){

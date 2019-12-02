@@ -38,6 +38,8 @@
         android:gravity="left|center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:drawablePadding="10dp"
+
         android:text="@string/gfrscores_button_title"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
@@ -58,6 +60,8 @@
         android:gravity="left|center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:drawablePadding="10dp"
+
         android:text="@string/notification_button_title"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
