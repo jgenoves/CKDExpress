@@ -1,13 +1,15 @@
 package com.example.jgenoves.ckdexpress;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public abstract class SingleFragmentActivity extends AppCompatActivity {
+public class LookUpPatientActivity extends AppCompatActivity {
 
-    protected abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +27,15 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public static Intent newIntent(Context packageContext){
+        Intent intent = new Intent(packageContext, LookUpPatientActivity.class);
+        return intent;
+    }
+
+
+    protected Fragment createFragment(){
+        return  new LookUpPatientFragment();
     }
 }

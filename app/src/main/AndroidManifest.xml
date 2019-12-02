@@ -8,18 +8,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".HomePageActivity">
+        android:theme="@style/AppTheme"
+        android:name="androidx.multidex.MultiDexApplication">
+
+        <activity android:name=".StartScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".eGFRListActivity">
 
         </activity>
+        <activity android:name=".AdminHomePageActivity"/>
+        <activity android:name=".AddPatientActivity"/>
+        <activity android:name=".AddGFRScoreActivity"/>
+        <activity android:name=".LookUpPatientActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".eGFRListActivity" />
+
+        <activity android:name=".notificationActivity"/>
     </application>
 
 </manifest>

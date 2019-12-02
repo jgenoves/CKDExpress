@@ -1,14 +1,15 @@
 package com.example.jgenoves.ckdexpress;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.fragment.app.Fragment;
-        import androidx.fragment.app.FragmentManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-public class HomePageActivity extends AppCompatActivity {
+public class StartScreenActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,15 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     public static Intent newIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, HomePageActivity.class);
+        Intent intent = new Intent(packageContext, StartScreenActivity.class);
         return intent;
     }
 
 
-    protected Fragment createFragment(){
-        return  new HomePageFragment();
-    }
+    protected Fragment createFragment (){
+        return new StartScreenFragment();
+    };
+
 }
+
+

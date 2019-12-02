@@ -1,18 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/gfr_score_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/score_title"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="3dp"
+            android:text="@string/entry_placeholder"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/gfr_score_header"
+        android:background="@android:color/black" />
+
+    <!-- NOTE: THERE IS NO IDEA HERE HOW DO YOU CREATE AN ID -->
+
+    <TextView
+        android:id="@+id/egfr_location"
+        android:layout_width="212dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/gfr_score_header"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="5dp"
+        android:paddingLeft="15dip"
+        android:paddingTop="5dp"
+        android:paddingRight="15dip"
+        android:text="@string/location"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/egfr_score"
-        android:layout_width="match_parent"
+        android:layout_width="197dp"
         android:layout_height="wrap_content"
-        android:text="Score" />
+        android:layout_below="@id/gfr_score_header"
+        android:paddingLeft="15dip"
+        android:paddingTop="5dp"
+        android:paddingRight="15dip"
+        android:text="@string/score"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/egfr_date"
-        android:layout_width="match_parent"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:text="Date"/>
+        android:layout_below="@id/egfr_score"
+        android:paddingLeft="15dip"
+        android:paddingTop="5dp"
+        android:paddingRight="15dip"
+        android:text="@string/date"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+</RelativeLayout>

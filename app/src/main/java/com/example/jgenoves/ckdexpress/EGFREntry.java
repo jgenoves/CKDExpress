@@ -6,22 +6,35 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class EGFREntry implements Serializable {
+public class EGFREntry implements Comparable<EGFREntry> {
 
-    private UUID mId;
+    private int mId;
     private double mScore;
     private Date mDate;
 
+
+    private String mLocation;
+
     public EGFREntry() {
-        mId = UUID.randomUUID();
+        mId = -1;
+        mScore = 0.0;
         mDate = new Date();
+        mLocation = "";
     }
 
-    public UUID getId() {
+    public String getLocation() {
+        return mLocation;
+    }
+
+    public void setLocation(String location) {
+        mLocation = location;
+    }
+
+    public int getId() {
         return mId;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         mId = id;
     }
 
@@ -42,7 +55,29 @@ public class EGFREntry implements Serializable {
     }
 
 
+    @Override
+    public int compareTo(EGFREntry e) {
 
 
-    
+        if(mId < e.getId()){
+            return -1;
+        }
+        else if(mId == getId()){
+            return 0;
+        }
+        else if(mId > getId()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+
+    }
+
+
+
+
+
+
+
 }

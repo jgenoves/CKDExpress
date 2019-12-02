@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/add_patient_title"
+        android:layout_width="329dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_patient_title"
+        android:textSize="44dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line_break_add_patient"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_title" />
+
+    <EditText
+        android:id="@+id/add_patient_firstname"
+        android:layout_width="367dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/add_patient_first_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_break_add_patient" />
+
+    <EditText
+        android:id="@+id/add_patient_lastname"
+        android:layout_width="367dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="28dp"
+        android:hint="@string/add_patient_last_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_firstname" />
+
+    <Button
+        android:id="@+id/add_patient_dob"
+        android:layout_width="367dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_lastname"
+        android:text="@string/add_patient_dob" />
+
+    <EditText
+        android:id="@+id/add_patient_email"
+        android:layout_width="367dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_dob" />
+
+    <EditText
+        android:id="@+id/add_patient_temporary_pass"
+        android:layout_width="367dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/temp_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_email" />
+
+    <Button
+        android:id="@+id/final_add_patient_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_patient_temporary_pass" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
