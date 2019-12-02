@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -107,6 +108,9 @@ public class eGFRListFragment extends Fragment {
             if(Patient.get(getActivity()).isNephVisitDue()){
                 if(mEGFREntry.getId() == Patient.get(getActivity()).getFirstGFRScore().getId()){
                     mScoreTextView.setTextColor(Color.RED);
+                    Drawable red_icon = getContext().getResources().getDrawable(R.drawable.ic_content_paste_red);
+                    Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
+                    mScoreTextView.setCompoundDrawablesWithIntrinsicBounds(red_icon, null, error_red, null);
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.example.jgenoves.ckdexpress;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -184,6 +185,8 @@ public class HomePageFragment extends Fragment {
                     mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
                     if(mPatient.isNephVisitDue()){
                         mRecentScore.setTextColor(Color.RED);
+                        Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
+                        mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
                     }
 
 

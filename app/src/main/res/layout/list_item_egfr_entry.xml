@@ -33,7 +33,7 @@
         android:layout_width="186dp"
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
-        android:drawableLeft="@drawable/ic_content_paste_dark"
+        android:drawableLeft="@drawable/ic_content_paste_green"
         android:gravity="left|center"
         android:paddingLeft="23dp"
         android:paddingTop="5dp"
