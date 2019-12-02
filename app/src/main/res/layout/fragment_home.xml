@@ -25,18 +25,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <Button
         android:id="@+id/to_egfr_scores_button"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="24dp"
-        android:background="#86BFFF"
+        android:layout_height="55dp"
+        android:layout_marginBottom="12dp"
+        android:background="#FFFFFF"
+        android:drawableLeft="@drawable/ic_scores_icon"
+        android:drawableRight="@drawable/ic_arrow_forward"
+        android:gravity="left|center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/gfrscores_button_title"
         android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/summary_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +51,17 @@
     <Button
         android:id="@+id/to_notifications_button"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
-        android:background="#86BFFF"
+        android:layout_height="55dp"
+        android:background="#FFFFFF"
+        android:drawableLeft="@drawable/ic_notifications"
+        android:drawableRight="@drawable/ic_arrow_forward"
+        android:gravity="left|center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/notification_button_title"
         android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/to_egfr_scores_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,46 +82,106 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <View
         android:id="@+id/line_break1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="36dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/ckd_level"
+        app:layout_constraintBottom_toTopOf="@+id/recent_score_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/recent_score"
-        android:layout_width="match_parent"
+        android:id="@+id/recent_score_title"
+        android:layout_width="175dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="84dp"
-        android:text="@string/recent_score"
-        app:layout_constraintBottom_toTopOf="@+id/sign_out"
+        android:text="@string/recent_score_title"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ckd_stage_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/ckd_level"
-        android:layout_width="match_parent"
+        android:id="@+id/ckd_stage_title"
+        android:layout_width="175dp"
         android:layout_height="60dp"
-        android:text="@string/ckd_stage"
-        app:layout_constraintBottom_toTopOf="@+id/recent_score"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="@string/ckd_stage_title"
+        app:layout_constraintBottom_toTopOf="@+id/base_gfr_score_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/base_gfr_score_title"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/base_gfr_score_title"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sign_out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/recent_score"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="20dp"
+        android:text="@string/loading"
+        android:textColor="#23b034"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/base_gfr_score_title"
+        app:layout_constraintTop_toBottomOf="@+id/line_break1" />
+
+    <TextView
+        android:id="@+id/ckd_stage"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/loading"
+        android:textSize="20dp"
+        android:textColor="#1610c7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recent_score" />
+
+    <TextView
+        android:id="@+id/base_gfr_score"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/loading"
+        android:textSize="20dp"
+        android:textColor="#e6b115"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckd_stage" />
 
     <TextView
         android:id="@+id/sign_out"
-        android:layout_width="70dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="103dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="@string/sign_out"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 
