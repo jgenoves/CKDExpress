@@ -116,7 +116,6 @@ public class HomePageFragment extends Fragment {
 
         DocumentReference patientRef = FirebaseFirestore.getInstance().collection("patients").document(mPatient.getUser().getUid());
 
-        CollectionReference gfrScoresRef = patientRef.collection("GFRScores");
 
         patientRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
            @Override
@@ -141,13 +140,61 @@ public class HomePageFragment extends Fragment {
                        mCkdStage.setText(mPatient.getCKDStage());
                        mBaseGFRScore.setText(Double.toString(baseGfr));
 
-                       mPatient.isNephDue();
+                       DocumentReference doc = document.getReference();
+                       CollectionReference gfrScoresRef = doc.collection("GFRScores");
 
-                       if(mPatient.isNephVisitDue()){
-                           mRecentScore.setTextColor(Color.RED);
-                           Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
-                           mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
-                       }
+                       gfrScoresRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                           @Override
+                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                               if(task.isSuccessful()){
+                                   mPatient.resetScores();
+                                   QuerySnapshot qSnapshot = task.getResult();
+                                   List<DocumentSnapshot> gfrScoresDocs = qSnapshot.getDocuments();
+                                   for(DocumentSnapshot s:gfrScoresDocs){
+                                       Log.d(TAG, "DocumentSnapshot data: " + s.getData());
+                                       EGFREntry e = new EGFREntry();
+
+                                       double id = s.getDouble("id");
+                                       int i = (int) id;
+                                       double score = s.getDouble("gfrScore");
+                                       Date date = s.getDate("date");
+                                       String location = s.getString("location");
+
+                                       e.setId(i);
+                                       e.setScore(score);
+                                       e.setDate(date);
+                                       e.setLocation(location);
+
+                                       mPatient.addGFRScore(e);
+
+                                   }
+
+                                   mPatient.isACheckupDue();
+
+
+
+
+                                   mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
+
+                                   mPatient.isNephDue();
+
+                                   if
+                                   (mPatient.isNephVisitDue()){
+                                       mRecentScore.setTextColor(Color.RED);
+                                       Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
+                                       mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
+                                   }
+
+
+
+                               }
+                               else{
+                                   Log.d(TAG, "get failed with ", task.getException());
+                               }
+                           }
+
+
+                       });
 
 
                    } else {
@@ -161,48 +208,7 @@ public class HomePageFragment extends Fragment {
        }
         );
 
-        gfrScoresRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    mPatient.resetScores();
-                    QuerySnapshot qSnapshot = task.getResult();
-                    List<DocumentSnapshot> gfrScoresDocs = qSnapshot.getDocuments();
-                    for(DocumentSnapshot s:gfrScoresDocs){
-                        Log.d(TAG, "DocumentSnapshot data: " + s.getData());
-                        EGFREntry e = new EGFREntry();
 
-                        double id = s.getDouble("id");
-                        int i = (int) id;
-                        double score = s.getDouble("gfrScore");
-                        Date date = s.getDate("date");
-                        String location = s.getString("location");
-
-                        e.setId(i);
-                        e.setScore(score);
-                        e.setDate(date);
-                        e.setLocation(location);
-
-                        mPatient.addGFRScore(e);
-
-                    }
-
-                    mPatient.isACheckupDue();
-
-
-
-
-                    mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
-
-
-                }
-                else{
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-
-
-        });
     }
 
 
