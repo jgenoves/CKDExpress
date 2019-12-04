@@ -59,6 +59,10 @@ public class HomePageFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPatient = Patient.get(getActivity());
 
+//        Intent i = PollService.newIntent(getActivity());
+//        getActivity().startService(i);
+        PollService.setServiceAlarm(getActivity(), true);
+
     }
 
     @Override

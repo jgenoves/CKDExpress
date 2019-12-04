@@ -28,6 +28,8 @@
         <activity android:name=".eGFRListActivity" />
 
         <activity android:name=".notificationActivity"/>
+
+        <service android:name=".PollService"/>
     </application>
 
 </manifest>
