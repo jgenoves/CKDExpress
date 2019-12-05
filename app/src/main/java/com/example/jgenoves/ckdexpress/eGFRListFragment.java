@@ -88,7 +88,7 @@ public class eGFRListFragment extends Fragment {
             mScoreTextView = (TextView) itemView.findViewById(R.id.egfr_score);
             mDateTextView = (TextView) itemView.findViewById(R.id.egfr_date);
             mLocationTextView = (TextView) itemView.findViewById(R.id.egfr_location);
-
+            itemView.setOnClickListener(this);
 
         }
 
@@ -116,7 +116,8 @@ public class eGFRListFragment extends Fragment {
         }
 
         public void onClick(View v){
-
+            Intent intent = GFRScoreViewPager.newIntent(getActivity(), mEGFREntry.getId());
+            startActivity(intent);
         }
     }
 

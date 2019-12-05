@@ -37,6 +37,7 @@ public class StartScreenFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         mPatient = Patient.get(getActivity());
+        mPatient.setUser(null);
     }
 
     @Override

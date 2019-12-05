@@ -172,8 +172,6 @@ public class HomePageFragment extends Fragment {
                                    mPatient.isACheckupDue();
 
 
-
-
                                    mRecentScore.setText("" + mPatient.getFirstGFRScore().getScore());
 
                                    mPatient.isNephDue();
@@ -184,8 +182,6 @@ public class HomePageFragment extends Fragment {
                                        Drawable error_red = getContext().getResources().getDrawable(R.drawable.ic_error_red);
                                        mRecentScore.setCompoundDrawablesWithIntrinsicBounds(null,null,error_red,null);
                                    }
-
-
 
                                }
                                else{

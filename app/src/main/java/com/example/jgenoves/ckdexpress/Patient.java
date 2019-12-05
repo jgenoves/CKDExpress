@@ -32,6 +32,9 @@ public class Patient {
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mUser;
 
+    //Used when searching for a patient via admin console. Is wiped after patient data is queried.
+    private String mTempUserId;
+
     public static Patient get(Context context){
         if(sPatient == null){
             sPatient = new Patient(context);
@@ -60,6 +63,14 @@ public class Patient {
 
 
 
+    }
+
+    public String getTempUserId() {
+        return mTempUserId;
+    }
+
+    public void setTempUserId(String tempUserId) {
+        mTempUserId = tempUserId;
     }
 
     public Date getDOB() {
@@ -215,6 +226,7 @@ public class Patient {
         mCheckupDue = false;
         mNephVisitDue = false;
         mUser = mFirebaseAuth.getCurrentUser();
+        mTempUserId = "";
 
     }
 
