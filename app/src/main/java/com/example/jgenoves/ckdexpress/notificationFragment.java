@@ -2,6 +2,7 @@ package com.example.jgenoves.ckdexpress;
 
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import org.w3c.dom.Text;
+import com.example.jgenoves.ckdexpress.Patient;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -36,7 +38,7 @@ public class notificationFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 //
-//        mPatient = Patient.get(getActivity());
+        mPatient = Patient.get(getActivity());
 
     }
 
@@ -52,14 +54,17 @@ public class notificationFragment extends Fragment {
 //        mWelcome.setText("Welcome back, \n" + mPatient.getFirstName() + ".");
 
 
-        if(testGFR == 1){
+        if(!mPatient.isCheckupDue() && !mPatient.isNephVisitDue()){
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
             mNotificationTitle.setText("No Current Notifications");
             mNotificationMessages = (TextView) v.findViewById(R.id.notification_messages);
             mNotificationMessages.setText("Everything is looking good!");
 
-            mNotificationMessages.setTextColor(Color.DKGRAY);
-            mNotificationTitle.setTextColor(Color.GREEN);
+            mNotificationMessages.setTextColor(getResources().getColor(R.color.color_text_darknavy));
+            mNotificationMessages.setTextSize(20);
+
+            mNotificationTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            mNotificationTitle.setTextColor(getResources().getColor(R.color.color_good_green));
 
 
 //            NotificationManager notif=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -70,28 +75,32 @@ public class notificationFragment extends Fragment {
 //            notify.flags |= Notification.FLAG_AUTO_CANCEL;
 //            notif.notify(0, notify);
 
-        }else if(testGFR == 2){
+        }else if(mPatient.isCheckupDue()){
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
-            mNotificationTitle.setText("Schedule an appointment with your doctor soon");
+            mNotificationTitle.setText("Schedule a checkup soon!");
             mNotificationMessages = (TextView) v.findViewById(R.id.notification_messages);
-            mNotificationMessages.setText("It looks like your GFR level has changed a bit" +
-                    " too much, you should schedule an appointment with your" +
-                    " doctor within the next month");
+            mNotificationMessages.setText("It's been a while since you've had a checkup. " +
+                    "Schedule a checkup with your doctor soon so you can get updated GFR" +
+                    "results!");
 
-            mNotificationMessages.setTextColor(Color.DKGRAY);
+            mNotificationMessages.setTextSize(20);
+            mNotificationMessages.setTextColor(getResources().getColor(R.color.color_text_darknavy));
+            mNotificationTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             //TODO:: make any/all of these colors statics in XML
-            mNotificationTitle.setTextColor(Color.rgb(199, 79, 23));
+            mNotificationTitle.setTextColor(getResources().getColor(R.color.color_warning_yellow));
 
-        }else if (testGFR == 3) {
+        }else if (mPatient.isNephVisitDue()) {
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
-            mNotificationTitle.setText("See your doctor ASAP");
+            mNotificationTitle.setText("Schedule a visit with your Nephrologist!");
             mNotificationMessages = (TextView) v.findViewById(R.id.notification_messages);
             mNotificationMessages.setText("Your GFR levels have changed a bit too much!" +
-                    " You should contact your doctor immediately to make sure " +
-                    " everything is alright!");
+                    " You should contact your doctor immediately to set up a visit " +
+                    "as soon as possible");
 
-            mNotificationMessages.setTextColor(Color.DKGRAY);
-            mNotificationTitle.setTextColor(Color.rgb(207, 33, 36));
+            mNotificationMessages.setTextSize(20);
+            mNotificationMessages.setTextColor(getResources().getColor(R.color.color_text_darknavy));
+            mNotificationTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            mNotificationTitle.setTextColor(Color.RED);
         } else{
             //there has been an error with the gfr levelsmNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
             mNotificationTitle = (TextView) v.findViewById(R.id.notification_title);
@@ -100,6 +109,7 @@ public class notificationFragment extends Fragment {
             mNotificationMessages.setText("You shoudln't ever see this, if you do" +
                     " that means there is an error on our end");
 
+            mNotificationMessages.setTextSize(20);
             mNotificationMessages.setTextColor(Color.CYAN);
             mNotificationTitle.setTextColor(Color.CYAN);
         }

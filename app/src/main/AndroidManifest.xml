@@ -28,7 +28,12 @@
         <activity android:name=".eGFRListActivity" />
         <activity android:name=".GFRScoreViewPager"/>
         <activity android:name=".ViewPatientActivity"/>
-        <activity android:name=".notificationActivity"/>
+
+        <activity android:name=".notificationActivity"
+            android:parentActivityName = ".HomePageActivity"
+        />
+
+        <service android:name=".PollService"/>
     </application>
 
 </manifest>

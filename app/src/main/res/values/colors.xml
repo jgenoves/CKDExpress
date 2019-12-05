@@ -3,4 +3,8 @@
     <color name="colorPrimary">#86BFFF</color>
     <color name="colorPrimaryDark">#494B4B</color>
     <color name="colorAccent">#B1E1FA</color>
+    <color name="color_good_green">#23b034</color>'
+    <color name="color_warning_yellow">#e6b115</color>
+    <color name="color_text_darknavy">#273a47</color>
+    <color name="color_actionbar_lightblue">#49B0F5</color>
 </resources>
