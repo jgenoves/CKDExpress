@@ -11,7 +11,7 @@
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
         android:text="@string/look_up_patient"
-        android:textSize="44dp"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

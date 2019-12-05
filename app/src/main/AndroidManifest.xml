@@ -26,7 +26,8 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".HomePageActivity" />
         <activity android:name=".eGFRListActivity" />
-
+        <activity android:name=".GFRScoreViewPager"/>
+        <activity android:name=".ViewPatientActivity"/>
         <activity android:name=".notificationActivity"/>
     </application>
 

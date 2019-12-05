@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -29,7 +34,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="fa0000" />
-                            <entry key="outputName" value="ic_error_red" />
+                            <entry key="outputName" value="ic_error_red_large" />
                             <entry key="sourceFile" value="C:\Users\genov" />
                           </map>
                         </option>

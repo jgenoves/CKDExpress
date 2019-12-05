@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CKD Express</string>
-    <string name="welccome_message">Loading...</string>
     <string name="summary_title">Summary:</string>
     <string name="recent_score_title">Recent Score: </string>
     <string name="ckd_stage_title">CKD Stage: </string>
@@ -15,11 +14,11 @@
     <string name="go">GO</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="login_title">Log In:</string>
+    <string name="login_title">Log In</string>
     <string name="login_admin">Login as Admin</string>
     <string name="add_patient">Add Patient</string>
     <string name="view_patient">View Patient</string>
-    <string name="add_patient_title">Add Patient:</string>
+    <string name="add_patient_title">Add Patient</string>
 
     <string name="add_patient_first_name">First Name:</string>
     <string name="add_patient_last_name">Last Name:</string>
@@ -36,5 +35,12 @@
     <string name="notification_button_title">Notifications</string>
     <string name="notification_title">Notification Title</string>
     <string name="notification_message">Notification Message</string>
+
+    <string name="numbers">00.0</string>
+
+    <string name="patient_info">Patient Information</string>
+    <string name="score_summary">Score Summary</string>
+    <string name="name">Name: </string>
+    <string name="last_checkup">Last Checkup: </string>
 
 </resources>

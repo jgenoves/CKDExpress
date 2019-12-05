@@ -10,9 +10,9 @@
         android:layout_width="370dp"
         android:layout_height="93dp"
         android:layout_marginTop="16dp"
-        android:text="@string/welccome_message"
+        android:text="@string/loading"
         android:textAlignment="viewStart"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_break_adm"
         android:textColor="#FFFFFF"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:background="@color/colorPrimary"/>
 
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_patient_btn"
         android:textColor="#FFFFFF"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:background="@color/colorPrimary"/>
 
